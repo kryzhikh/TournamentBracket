@@ -23,6 +23,10 @@
 		8B17AF48222FBDB40086780C /* Competitor+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF44222FBDB40086780C /* Competitor+CoreDataClass.swift */; };
 		8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED1A1A22310EE2009E330D /* Reusable.swift */; };
 		8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */; };
+		8BF299DC2236A15D006A685C /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DB2236A15D006A685C /* Style.swift */; };
+		8BF299DF2237F9E2006A685C /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */; };
+		8BF299E02237F9E2006A685C /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */; };
+		8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E1223A9616006A685C /* UIimage+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		8B17AF44222FBDB40086780C /* Competitor+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Competitor+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BED1A1A22310EE2009E330D /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		8BF299DB2236A15D006A685C /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
+		8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
+		8BF299E1223A9616006A685C /* UIimage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,8 @@
 				8B17AF4A222FBE000086780C /* CoreData */,
 				8B17AF17222E916E0086780C /* AppDelegate.swift */,
 				8B17AF19222E916E0086780C /* ViewController.swift */,
+				8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */,
+				8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */,
 				8B17AF1B222E916E0086780C /* Main.storyboard */,
 				8B17AF4B222FCC6F0086780C /* Groups */,
 				8B17AF21222E91700086780C /* Assets.xcassets */,
@@ -87,6 +97,8 @@
 				8B17AF1E222E916E0086780C /* TournamentTables.xcdatamodeld */,
 				8BED1A1A22310EE2009E330D /* Reusable.swift */,
 				8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */,
+				8BF299DB2236A15D006A685C /* Style.swift */,
+				8BF299E1223A9616006A685C /* UIimage+Ext.swift */,
 			);
 			path = "Tournament Bracket";
 			sourceTree = "<group>";
@@ -172,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B17AF2F222E97360086780C /* GroupCell.xib in Resources */,
+				8BF299E02237F9E2006A685C /* GroupDetailsViewController.xib in Resources */,
 				8B17AF35222EA0760086780C /* GroupTableCell.xib in Resources */,
 				8B17AF25222E91700086780C /* LaunchScreen.storyboard in Resources */,
 				8B17AF22222E91700086780C /* Assets.xcassets in Resources */,
@@ -193,8 +206,11 @@
 				8B17AF1A222E916E0086780C /* ViewController.swift in Sources */,
 				8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */,
 				8B17AF41222FB6090086780C /* CoreData.swift in Sources */,
+				8BF299DC2236A15D006A685C /* Style.swift in Sources */,
+				8BF299DF2237F9E2006A685C /* GroupDetailsViewController.swift in Sources */,
 				8B17AF46222FBDB40086780C /* Group+CoreDataClass.swift in Sources */,
 				8B17AF18222E916E0086780C /* AppDelegate.swift in Sources */,
+				8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */,
 				8B17AF48222FBDB40086780C /* Competitor+CoreDataClass.swift in Sources */,
 				8B17AF20222E916E0086780C /* TournamentTables.xcdatamodeld in Sources */,
 			);

@@ -10,9 +10,12 @@ import UIKit
 
 class GroupTableView: UITableView {
     
+//    let tableWidth: CGFloat = 300
+    
     var group: Group? {
         didSet {
             reloadData()
+            setConstraints()
         }
     }
 
@@ -32,18 +35,22 @@ class GroupTableView: UITableView {
         estimatedRowHeight = GroupTableCell.cellHeight
         delegate = self
         dataSource = self
+        isUserInteractionEnabled = false
+        tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    func setConstraints() {
         let competitorsCount = group?.competitors?.count ?? 0
-        bounds = CGRect(x: 0, y: 0, width: 350, height: CGFloat(competitorsCount) * GroupTableCell.cellHeight)
+        let height = CGFloat(competitorsCount) * GroupTableCell.cellHeight
+        removeConstraints(constraints)
+//        widthAnchor.constraint(equalToConstant: tableWidth).isActive = true
+        heightAnchor.constraint(equalToConstant: height).isActive = true
     }
     
 }
 
 extension GroupTableView: UITableViewDelegate {
-    
+
 }
 
 extension GroupTableView: UITableViewDataSource {

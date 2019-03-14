@@ -12,31 +12,52 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="gTV-IL-0wX" customClass="GroupCell" customModule="Tournament_Bracket" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="284" height="123"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="gTV-IL-0wX" customClass="GroupCell" customModule="Tournament_Bracket" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="284" height="191"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="284" height="123"/>
+                <rect key="frame" x="0.0" y="0.0" width="284" height="191"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3l6-Ak-idA" customClass="GroupTableView" customModule="Tournament_Bracket" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="284" height="123"/>
+                        <rect key="frame" x="0.0" y="44" width="284" height="147"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tableView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ES0-c9-G3K">
+                        <rect key="frame" x="0.0" y="0.0" width="284" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk8-Ry-IjX">
+                                <rect key="frame" x="20" y="12" width="43" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.73715512104794523" green="0.63885580342602744" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fk8-Ry-IjX" firstAttribute="centerY" secondItem="ES0-c9-G3K" secondAttribute="centerY" id="2a1-JO-eZv"/>
+                            <constraint firstAttribute="height" constant="44" id="bmG-1g-qj3"/>
+                            <constraint firstItem="fk8-Ry-IjX" firstAttribute="leading" secondItem="ES0-c9-G3K" secondAttribute="leading" constant="20" id="hIn-04-GZQ"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="ES0-c9-G3K" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0FX-KM-kDX"/>
                 <constraint firstAttribute="bottom" secondItem="3l6-Ak-idA" secondAttribute="bottom" id="2I4-eV-zJ0"/>
                 <constraint firstAttribute="trailing" secondItem="3l6-Ak-idA" secondAttribute="trailing" id="2o1-yh-jZR"/>
+                <constraint firstItem="3l6-Ak-idA" firstAttribute="top" secondItem="ES0-c9-G3K" secondAttribute="bottom" id="TSj-ri-kDE"/>
+                <constraint firstAttribute="trailing" secondItem="ES0-c9-G3K" secondAttribute="trailing" id="bRB-LX-xyq"/>
+                <constraint firstItem="ES0-c9-G3K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cPB-Up-dk6"/>
                 <constraint firstItem="3l6-Ak-idA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dvC-sT-yQV"/>
-                <constraint firstItem="3l6-Ak-idA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kSK-if-w1k"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="284" height="123"/>
+            <size key="customSize" width="284" height="191"/>
             <connections>
+                <outlet property="groupNameLabel" destination="fk8-Ry-IjX" id="wDR-Xd-EN1"/>
                 <outlet property="tableView" destination="3l6-Ak-idA" id="jfb-LP-syR"/>
             </connections>
-            <point key="canvasLocation" x="244.80000000000001" y="89.955022488755631"/>
+            <point key="canvasLocation" x="244.80000000000001" y="120.08995502248877"/>
         </collectionViewCell>
     </objects>
 </document>
