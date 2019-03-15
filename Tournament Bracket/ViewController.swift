@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CollectionTransitionable {
     
     var groupCardWidth: CGFloat {
         return min(view.frame.width - 40, 320.0)
     }
 
     @IBOutlet weak var groupsCollectionView: UICollectionView!
+    
+    var transitionCollectionView: UICollectionView {
+        return groupsCollectionView
+    }
     
     var groups: [Group]!
     
@@ -69,6 +73,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let group = groups[indexPath.row]
         let vc = GroupDetailsViewController()
+        vc.indexPath = indexPath
         if let cell = collectionView.cellForItem(at: indexPath) {
             let img = cell.makeSnapshot()
             print(img)

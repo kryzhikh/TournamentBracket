@@ -8,11 +8,14 @@
 
 import UIKit
 
-class GroupDetailsViewController: UIViewController {
+class GroupDetailsViewController: UIViewController, CollectionDetailsTransitionable {
     
+    @IBOutlet weak var groupContainer: UIView!
     @IBOutlet weak var groupTableView: GroupTableView!
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    
+    var indexPath = IndexPath(row: 0, section: 0)
     
     var group: Group? {
         didSet {
@@ -21,6 +24,20 @@ class GroupDetailsViewController: UIViewController {
                 groupNameLabel.text = "Group " + (group?.name ?? "")
             }
         }
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        transitioningDelegate = self
     }
     
     override func viewDidLoad() {
@@ -35,4 +52,14 @@ class GroupDetailsViewController: UIViewController {
         dismiss(animated: true)
     }
 
+}
+
+extension GroupDetailsViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return GroupDetailsTransition(duration: 0.3, isPresenting: false)
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return GroupDetailsTransition(duration: 0.3, isPresenting: true)
+    }
 }

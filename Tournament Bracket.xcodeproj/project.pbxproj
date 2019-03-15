@@ -27,6 +27,9 @@
 		8BF299DF2237F9E2006A685C /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */; };
 		8BF299E02237F9E2006A685C /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */; };
 		8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E1223A9616006A685C /* UIimage+Ext.swift */; };
+		8BF299E4223B8CFF006A685C /* CollectionTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E3223B8CFF006A685C /* CollectionTransitionable.swift */; };
+		8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */; };
+		8BF299E8223BA8AE006A685C /* CollectionDetailsTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E7223BA8AE006A685C /* CollectionDetailsTransitionable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
 		8BF299E1223A9616006A685C /* UIimage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Ext.swift"; sourceTree = "<group>"; };
+		8BF299E3223B8CFF006A685C /* CollectionTransitionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTransitionable.swift; sourceTree = "<group>"; };
+		8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsTransition.swift; sourceTree = "<group>"; };
+		8BF299E7223BA8AE006A685C /* CollectionDetailsTransitionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailsTransitionable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 				8B17AF4A222FBE000086780C /* CoreData */,
 				8B17AF17222E916E0086780C /* AppDelegate.swift */,
 				8B17AF19222E916E0086780C /* ViewController.swift */,
+				8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */,
 				8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */,
 				8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */,
 				8B17AF1B222E916E0086780C /* Main.storyboard */,
@@ -99,6 +106,8 @@
 				8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */,
 				8BF299DB2236A15D006A685C /* Style.swift */,
 				8BF299E1223A9616006A685C /* UIimage+Ext.swift */,
+				8BF299E3223B8CFF006A685C /* CollectionTransitionable.swift */,
+				8BF299E7223BA8AE006A685C /* CollectionDetailsTransitionable.swift */,
 			);
 			path = "Tournament Bracket";
 			sourceTree = "<group>";
@@ -202,7 +211,9 @@
 				8B17AF31222E9C400086780C /* GroupTableView.swift in Sources */,
 				8B17AF2E222E97360086780C /* GroupCell.swift in Sources */,
 				8B17AF34222EA0760086780C /* GroupTableCell.swift in Sources */,
+				8BF299E4223B8CFF006A685C /* CollectionTransitionable.swift in Sources */,
 				8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */,
+				8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */,
 				8B17AF1A222E916E0086780C /* ViewController.swift in Sources */,
 				8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */,
 				8B17AF41222FB6090086780C /* CoreData.swift in Sources */,
@@ -213,6 +224,7 @@
 				8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */,
 				8B17AF48222FBDB40086780C /* Competitor+CoreDataClass.swift in Sources */,
 				8B17AF20222E916E0086780C /* TournamentTables.xcdatamodeld in Sources */,
+				8BF299E8223BA8AE006A685C /* CollectionDetailsTransitionable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
