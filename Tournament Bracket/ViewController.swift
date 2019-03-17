@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, CollectionTransitionable {
     
     var groupCardWidth: CGFloat {
-        return min(view.frame.width - 40, 320.0)
+        return min(view.frame.width - 60, 340.0)
     }
 
     @IBOutlet weak var groupsCollectionView: UICollectionView!

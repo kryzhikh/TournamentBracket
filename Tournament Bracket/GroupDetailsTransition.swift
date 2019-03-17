@@ -37,19 +37,31 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
             let ip = toController.indexPath
             let cell = fromController.transitionCollectionView.cellForItem(at: ip)!
             let snapshot = cell.snapshotView(afterScreenUpdates: false)!
-            snapshot.frame = CGRect(origin: cell.convert(cell.frame.origin, to: containerView), size: cell.frame.size)
+            let snapshotOrigin = fromController.groupsCollectionView.convert(cell.frame.origin, to: containerView)
+            snapshot.frame = CGRect(origin: snapshotOrigin, size: cell.frame.size)
             containerView.addSubview(fromController.view)
             containerView.addSubview(toController.view)
             containerView.addSubview(snapshot)
-            let toOrigin = toController.groupContainer.convert(toController.groupContainer.frame.origin, to: nil)
+            let toOrigin = toController.groupContainer.superview!.convert(toController.groupContainer.frame.origin, to: containerView)
             UIView.animate(withDuration: duration, animations: {
-                snapshot.frame.origin = toOrigin
+                snapshot.frame = CGRect(origin: toOrigin, size: toController.groupContainer.frame.size)
                 fromController.view.alpha = 0
             }) { finished in
-                //                if finished {
                 snapshot.removeFromSuperview()
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                //                }
+            }
+        }
+        
+        else {
+            let toController = transitionContext.viewController(forKey: .to) as! ViewController
+            let fromController = transitionContext.viewController(forKey: .from) as! GroupDetailsViewController
+            containerView.addSubview(toController.view)
+            toController.view.frame = containerView.frame
+            UIView.animate(withDuration: duration, animations: {
+                fromController.view.alpha = 0
+                toController.view.alpha = 1
+            }) { finished in
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             }
         }
     }
