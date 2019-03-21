@@ -37,6 +37,11 @@ extension ViewStyle where T: UIView {
             l.shadowOpacity = 0.1
         }
     }
+    static var grayBackground: ViewStyle<T> {
+        return ViewStyle<T> {
+            $0.backgroundColor = UIColor(hex: 0xF0EFEB)
+        }
+    }
 }
 
 protocol Stylable { }

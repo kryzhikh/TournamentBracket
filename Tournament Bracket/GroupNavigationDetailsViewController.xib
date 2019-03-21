@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupNavigationDetailsViewController" customModule="Tournament_Bracket" customModuleProvider="target">
+            <connections>
+                <outlet property="groupContainer" destination="Oc9-GX-EFW" id="bYZ-2g-osT"/>
+                <outlet property="groupContentView" destination="er2-Ga-c8N" id="6km-db-FYm"/>
+                <outlet property="groupLeftConstraint" destination="rfe-uS-haU" id="WiT-X1-QQ5"/>
+                <outlet property="groupRightConstraint" destination="pHd-70-sHI" id="9jv-9O-7q9"/>
+                <outlet property="groupTableView" destination="qYp-7Z-o3d" id="tuR-ff-IBh"/>
+                <outlet property="titleLabel" destination="cQv-rE-EaE" id="Dgr-2l-TDo"/>
+                <outlet property="titleToTopConstraint" destination="JF3-BN-6WZ" id="Swc-EJ-BXS"/>
+                <outlet property="titleView" destination="Inz-gw-9a1" id="u7M-D3-h3k"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oc9-GX-EFW">
+                    <rect key="frame" x="16" y="224" width="343" height="219"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er2-Ga-c8N">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="219"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qYp-7Z-o3d" customClass="GroupTableView" customModule="Tournament_Bracket" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="44" width="343" height="175"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="175" placeholder="YES" id="7uK-34-UZj"/>
+                                    </constraints>
+                                </tableView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Inz-gw-9a1">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQv-rE-EaE">
+                                            <rect key="frame" x="20" y="11.5" width="43" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.78823529410000004" green="0.71372549019999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="cQv-rE-EaE" firstAttribute="centerY" secondItem="Inz-gw-9a1" secondAttribute="centerY" id="S6W-Ne-jHc"/>
+                                        <constraint firstAttribute="height" constant="44" id="m9H-Km-3jP"/>
+                                        <constraint firstItem="cQv-rE-EaE" firstAttribute="leading" secondItem="Inz-gw-9a1" secondAttribute="leading" constant="20" id="rWW-Tf-vyA"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="qYp-7Z-o3d" secondAttribute="trailing" id="7S2-mY-6BG"/>
+                                <constraint firstItem="Inz-gw-9a1" firstAttribute="leading" secondItem="er2-Ga-c8N" secondAttribute="leading" id="9WQ-Cz-nDy"/>
+                                <constraint firstAttribute="trailing" secondItem="Inz-gw-9a1" secondAttribute="trailing" id="AcQ-22-b7V"/>
+                                <constraint firstAttribute="bottom" secondItem="qYp-7Z-o3d" secondAttribute="bottom" id="HWR-HR-dMb"/>
+                                <constraint firstItem="qYp-7Z-o3d" firstAttribute="leading" secondItem="er2-Ga-c8N" secondAttribute="leading" id="NZM-r5-osA"/>
+                                <constraint firstItem="qYp-7Z-o3d" firstAttribute="top" secondItem="Inz-gw-9a1" secondAttribute="bottom" id="PFl-1u-mRX"/>
+                                <constraint firstItem="Inz-gw-9a1" firstAttribute="top" secondItem="er2-Ga-c8N" secondAttribute="top" id="iDh-Ef-wxh"/>
+                                <constraint firstAttribute="width" constant="343" id="vZz-K7-Jdz"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="er2-Ga-c8N" firstAttribute="leading" secondItem="Oc9-GX-EFW" secondAttribute="leading" id="5Ae-lF-FGr"/>
+                        <constraint firstItem="er2-Ga-c8N" firstAttribute="top" secondItem="Oc9-GX-EFW" secondAttribute="top" id="C4G-In-Lhh"/>
+                        <constraint firstAttribute="bottom" secondItem="er2-Ga-c8N" secondAttribute="bottom" id="Gi1-Mc-t7u"/>
+                        <constraint firstAttribute="trailing" secondItem="er2-Ga-c8N" secondAttribute="trailing" id="zhh-We-ahf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Oc9-GX-EFW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="224" id="JF3-BN-6WZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Oc9-GX-EFW" secondAttribute="trailing" constant="16" id="pHd-70-sHI"/>
+                <constraint firstItem="Oc9-GX-EFW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="rfe-uS-haU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

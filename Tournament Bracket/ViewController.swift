@@ -30,10 +30,14 @@ class ViewController: UIViewController, CollectionTransitionable {
         }
         groupsCollectionView.register(UINib(nibName: GroupCell.nibName, bundle: nil), forCellWithReuseIdentifier: GroupCell.reuseId)
         prepareData()
+        view.apply(.grayBackground)
     }
     
     func prepareData() {
-        let groupsDict = ["A": ["Vasili", "Petr", "Ivan", "Valera", "Goreslav"], "B": ["Mike", "John", "Tom", "Jerry"], "C": ["Jovanni", "Alejandro", "Marko", "Polo"]]
+        let groupsDict = ["A": ["Vasili", "Petr", "Ivan", "Valera", "Gorislav"],
+                          "B": ["Mike", "John", "Tom", "Jerry"],
+                          "C": ["Jovanni", "Alejandro", "Marko", "Polo"],
+                          "D": ["Chan", "Chen", "Zhao", "Minzi"]]
         
         let context = CoreData.shared.viewContext
         var groups = [Group]()
@@ -79,6 +83,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
             print(img)
         }
         vc.group = group
+        vc.groupCardWidth = groupCardWidth
         present(vc, animated: true)
     }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

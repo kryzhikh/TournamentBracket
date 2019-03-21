@@ -10,18 +10,28 @@ import UIKit
 
 class GroupDetailsViewController: UIViewController, CollectionDetailsTransitionable {
     
-    @IBOutlet weak var groupContainer: UIView!
+    @IBOutlet weak var groupContainerView: UIView!
+    @IBOutlet weak var contentContainer: UIView!
+    @IBOutlet private weak var groupContentView: UIView!
     @IBOutlet weak var groupTableView: GroupTableView!
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var groupCardWidthConstraint: NSLayoutConstraint!
     
     var indexPath = IndexPath(row: 0, section: 0)
     
     var group: Group? {
         didSet {
             if groupTableView != nil && groupNameLabel != nil {
-                groupTableView.group = group
-                groupNameLabel.text = "Group " + (group?.name ?? "")
+                setupGroup()
+            }
+        }
+    }
+    
+    var groupCardWidth: CGFloat = 0 {
+        didSet {
+            if groupCardWidthConstraint != nil {
+                groupCardWidthConstraint.constant = groupCardWidth
             }
         }
     }
@@ -44,6 +54,16 @@ class GroupDetailsViewController: UIViewController, CollectionDetailsTransitiona
         super.viewDidLoad()
 
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        setupGroup()
+        groupContentView.apply(.rounded)
+        groupContainerView.apply(.rounded)
+        groupContainerView.apply(.shadowed)
+        view.apply(.grayBackground)
+        contentContainer.apply(.grayBackground)
+        groupCardWidthConstraint.constant = groupCardWidth
+    }
+    
+    func setupGroup() {
         groupTableView.group = group
         groupNameLabel.text = "Group " + (group?.name ?? "")
     }
@@ -56,10 +76,10 @@ class GroupDetailsViewController: UIViewController, CollectionDetailsTransitiona
 
 extension GroupDetailsViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return GroupDetailsTransition(duration: 0.3, isPresenting: false)
+        return GroupDetailsTransition(duration: 0.4, isPresenting: false)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return GroupDetailsTransition(duration: 0.3, isPresenting: true)
+        return GroupDetailsTransition(duration: 0.4, isPresenting: true)
     }
 }

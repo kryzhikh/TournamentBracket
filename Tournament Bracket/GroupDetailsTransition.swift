@@ -33,34 +33,77 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupDetailsViewController
             let fromController = transitionContext.viewController(forKey: .from) as! ViewController
-            toController.view.frame = containerView.frame
+            toController.view.frame = transitionContext.finalFrame(for: toController)
+            toController.groupContainerView.alpha = 0
+//            toController.contentContainer.alpha = 0
+//            toController.contentContainer.transform = CGAffineTransform(translationX: 0, y: -150)
             let ip = toController.indexPath
-            let cell = fromController.transitionCollectionView.cellForItem(at: ip)!
-            let snapshot = cell.snapshotView(afterScreenUpdates: false)!
-            let snapshotOrigin = fromController.groupsCollectionView.convert(cell.frame.origin, to: containerView)
-            snapshot.frame = CGRect(origin: snapshotOrigin, size: cell.frame.size)
+            let targetCell = fromController.transitionCollectionView.cellForItem(at: ip)!
+            let snapshot = targetCell.snapshotView(afterScreenUpdates: false)!
+            let snapshotOrigin = fromController.groupsCollectionView.convert(targetCell.frame.origin, to: containerView)
+            snapshot.frame = CGRect(origin: snapshotOrigin, size: targetCell.frame.size)
             containerView.addSubview(fromController.view)
             containerView.addSubview(toController.view)
             containerView.addSubview(snapshot)
-            let toOrigin = toController.groupContainer.superview!.convert(toController.groupContainer.frame.origin, to: containerView)
-            UIView.animate(withDuration: duration, animations: {
-                snapshot.frame = CGRect(origin: toOrigin, size: toController.groupContainer.frame.size)
+            targetCell.alpha = 0
+            let toOrigin = toController.groupContainerView.superview!.convert(toController.groupContainerView.frame.origin, to: containerView)
+            
+            let anim = CABasicAnimation(keyPath: "transform.translation.y")
+            anim.fromValue = -50
+            anim.toValue = 0
+            anim.duration = duration
+            anim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+            let reveal = CABasicAnimation(keyPath: "opacity")
+            reveal.fromValue = 0.0
+            reveal.toValue = 1.0
+            reveal.duration = duration
+            toController.contentContainer.layer.add(anim, forKey: nil)
+            toController.contentContainer.layer.add(reveal, forKey: nil)
+            
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                snapshot.frame.origin.y = toOrigin.y
                 fromController.view.alpha = 0
-            }) { finished in
+//                toController.contentContainer.alpha = 1
+//                toController.contentContainer.transform = CGAffineTransform.identity
+//                fromController.groupsCollectionView.visibleCells.forEach({ cell in
+//                    let tY: CGFloat = cell.frame.minY < targetCell.frame.minY ? -100 : 100
+//                    cell.transform = CGAffineTransform(translationX: 0, y: tY)
+//                })
+            }) { _ in
+                fromController.groupsCollectionView.visibleCells.forEach({ cell in
+                    cell.transform = CGAffineTransform.identity
+                })
+                toController.groupContainerView.alpha = 1
                 snapshot.removeFromSuperview()
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             }
+            
         }
         
         else {
             let toController = transitionContext.viewController(forKey: .to) as! ViewController
             let fromController = transitionContext.viewController(forKey: .from) as! GroupDetailsViewController
+            containerView.addSubview(fromController.view)
             containerView.addSubview(toController.view)
-            toController.view.frame = containerView.frame
-            UIView.animate(withDuration: duration, animations: {
-                fromController.view.alpha = 0
+            toController.view.frame = transitionContext.finalFrame(for: toController)
+            
+            let targetCell = toController.groupsCollectionView.cellForItem(at: fromController.indexPath)!
+            let snapshot = fromController.groupContainerView.snapshotView(afterScreenUpdates: false)!
+            let snapshotOriginTo = toController.groupsCollectionView.convert(targetCell.frame.origin, to: containerView)
+            let snapshotOriginFrom = fromController.groupContainerView.superview!.convert(fromController.groupContainerView.frame.origin, to: containerView)
+            snapshot.frame.origin = snapshotOriginFrom
+            containerView.addSubview(snapshot)
+            fromController.groupContainerView.alpha = 0
+            
+            
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+//                fromController.view.alpha = 0
                 toController.view.alpha = 1
+                fromController.contentContainer.transform = CGAffineTransform(translationX: 0, y: -50)
+                snapshot.frame.origin = snapshotOriginTo
             }) { finished in
+                targetCell.alpha = 1
+                snapshot.removeFromSuperview()
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             }
         }
