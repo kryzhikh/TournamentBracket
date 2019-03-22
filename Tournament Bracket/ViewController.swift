@@ -33,6 +33,11 @@ class ViewController: UIViewController, CollectionTransitionable {
         view.apply(.grayBackground)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     func prepareData() {
         let groupsDict = ["A": ["Vasili", "Petr", "Ivan", "Valera", "Gorislav"],
                           "B": ["Mike", "John", "Tom", "Jerry"],
@@ -84,7 +89,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
         }
         vc.group = group
         vc.groupCardWidth = groupCardWidth
-        present(vc, animated: true)
+        if let nc = self.navigationController {
+            nc.pushViewController(vc, animated: true)
+        }
+        else {
+            present(vc, animated: true)
+        }
     }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        let width = collectionView.frame.width - 40

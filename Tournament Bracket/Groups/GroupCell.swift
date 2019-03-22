@@ -13,8 +13,8 @@ class GroupCell: UICollectionViewCell {
     static let nibName = "GroupCell"
     static let reuseId = "GroupCell"
     
-    @IBOutlet weak var tableView: GroupTableView!
-    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var groupView: GroupView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,8 +27,8 @@ class GroupCell: UICollectionViewCell {
     }
     
     func fill(with group: Group) {
-        tableView.group = group
-        groupNameLabel.text = "Group " + (group.name?.uppercased() ?? "")
+        groupView.groupTable.group = group
+        groupView.titleLabel.text = "Group " + (group.name?.uppercased() ?? "")
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

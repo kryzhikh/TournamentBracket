@@ -10,10 +10,6 @@ import UIKit
 
 class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
-    enum TransitionType {
-        case presenting, dismissing
-    }
-    
     var duration: TimeInterval
     var isPresenting: Bool
     
@@ -32,7 +28,10 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupDetailsViewController
-            let fromController = transitionContext.viewController(forKey: .from) as! ViewController
+            let fromTabBarController = transitionContext.viewController(forKey: .from) as! UITabBarController
+            let fromController = fromTabBarController.selectedViewController! as! ViewController
+            
+            
             toController.view.frame = transitionContext.finalFrame(for: toController)
             toController.groupContainerView.alpha = 0
             containerView.backgroundColor = fromController.view.backgroundColor
@@ -43,10 +42,11 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
             let ip = toController.indexPath
             let targetCell = fromController.transitionCollectionView.cellForItem(at: ip)!
             let snapshot = targetCell.snapshotView(afterScreenUpdates: false)!
+            snapshot.apply(.shadowed)
             let snapshotOrigin = fromController.groupsCollectionView.convert(targetCell.frame.origin, to: containerView)
             snapshot.frame = CGRect(origin: snapshotOrigin, size: targetCell.frame.size)
-            
-            containerView.addSubview(fromController.view)
+
+            containerView.addSubview(fromTabBarController.view)
             containerView.addSubview(toController.view)
             toController.view.alpha = 0
             containerView.addSubview(snapshot)
@@ -70,14 +70,16 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
             
             UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 snapshot.frame.origin.y = toOrigin.y
-//                fromController.view.alpha = 0
+
+//                fromTabBarController.view.alpha = 0
+                
                 toController.view.alpha = 1
-//                toController.contentContainer.alpha = 1
-//                toController.contentContainer.transform = CGAffineTransform.identity
-//                fromController.groupsCollectionView.visibleCells.forEach({ cell in
-//                    let tY: CGFloat = cell.frame.minY < targetCell.frame.minY ? -100 : 100
-//                    cell.transform = CGAffineTransform(translationX: 0, y: tY)
-//                })
+                toController.contentContainer.alpha = 1
+                toController.contentContainer.transform = CGAffineTransform.identity
+                fromController.groupsCollectionView.visibleCells.forEach({ cell in
+                    let tY: CGFloat = cell.frame.minY < targetCell.frame.minY ? -100 : 100
+                    cell.transform = CGAffineTransform(translationX: 0, y: tY)
+                })
             }) { _ in
                 fromController.groupsCollectionView.visibleCells.forEach({ cell in
                     cell.transform = CGAffineTransform.identity
@@ -90,14 +92,16 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }
         
         else {
-            let toController = transitionContext.viewController(forKey: .to) as! ViewController
+            let toTabBarController = transitionContext.viewController(forKey: .to) as! UITabBarController
+            let toController = toTabBarController.selectedViewController! as! ViewController
             let fromController = transitionContext.viewController(forKey: .from) as! GroupDetailsViewController
             containerView.addSubview(fromController.view)
-            containerView.addSubview(toController.view)
-            toController.view.frame = transitionContext.finalFrame(for: toController)
+            containerView.addSubview(toTabBarController.view)
+            toTabBarController.view.frame = transitionContext.finalFrame(for: toTabBarController)
             
             let targetCell = toController.groupsCollectionView.cellForItem(at: fromController.indexPath)!
             let snapshot = fromController.groupContainerView.snapshotView(afterScreenUpdates: false)!
+            snapshot.apply(.shadowed)
             let snapshotOriginTo = toController.groupsCollectionView.convert(targetCell.frame.origin, to: containerView)
             let snapshotOriginFrom = fromController.groupContainerView.superview!.convert(fromController.groupContainerView.frame.origin, to: containerView)
             snapshot.frame.origin = snapshotOriginFrom
@@ -107,6 +111,7 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
             
             UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
 //                fromController.view.alpha = 0
+                toTabBarController.view.alpha = 1
                 toController.view.alpha = 1
                 fromController.contentContainer.transform = CGAffineTransform(translationX: 0, y: -50)
                 snapshot.frame.origin = snapshotOriginTo

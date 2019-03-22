@@ -42,6 +42,11 @@ extension ViewStyle where T: UIView {
             $0.backgroundColor = UIColor(hex: 0xF0EFEB)
         }
     }
+    static var groupNameBackground: ViewStyle<T> {
+        return ViewStyle<T> {
+            $0.backgroundColor = UIColor(hex: 0xC9B6FF)
+        }
+    }
 }
 
 protocol Stylable { }

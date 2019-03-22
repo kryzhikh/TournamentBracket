@@ -12,17 +12,16 @@ class GroupDetailsViewController: UIViewController, CollectionDetailsTransitiona
     
     @IBOutlet weak var groupContainerView: UIView!
     @IBOutlet weak var contentContainer: UIView!
-    @IBOutlet private weak var groupContentView: UIView!
-    @IBOutlet weak var groupTableView: GroupTableView!
-    @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var groupCardWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var groupView: GroupView!
     
     var indexPath = IndexPath(row: 0, section: 0)
     
     var group: Group? {
         didSet {
-            if groupTableView != nil && groupNameLabel != nil {
+            if groupView != nil {
                 setupGroup()
             }
         }
@@ -55,7 +54,7 @@ class GroupDetailsViewController: UIViewController, CollectionDetailsTransitiona
 
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         setupGroup()
-        groupContentView.apply(.rounded)
+        groupView.apply(.rounded)
         groupContainerView.apply(.rounded)
         groupContainerView.apply(.shadowed)
         view.apply(.grayBackground)
@@ -63,9 +62,14 @@ class GroupDetailsViewController: UIViewController, CollectionDetailsTransitiona
         groupCardWidthConstraint.constant = groupCardWidth
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func setupGroup() {
-        groupTableView.group = group
-        groupNameLabel.text = "Group " + (group?.name ?? "")
+        groupView.groupTable.group = group
+        groupView.title = "Group " + (group?.name ?? "")
     }
     
     @objc func close() {
