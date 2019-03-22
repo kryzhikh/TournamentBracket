@@ -17,7 +17,9 @@
                 <outlet property="groupLeftConstraint" destination="rfe-uS-haU" id="WiT-X1-QQ5"/>
                 <outlet property="groupRightConstraint" destination="pHd-70-sHI" id="9jv-9O-7q9"/>
                 <outlet property="groupTableView" destination="qYp-7Z-o3d" id="tuR-ff-IBh"/>
+                <outlet property="headerHeightConstraint" destination="m9H-Km-3jP" id="G5u-7I-9E5"/>
                 <outlet property="titleLabel" destination="cQv-rE-EaE" id="Dgr-2l-TDo"/>
+                <outlet property="titleLeftConstraint" destination="rWW-Tf-vyA" id="Brw-EN-9Vy"/>
                 <outlet property="titleToTopConstraint" destination="JF3-BN-6WZ" id="Swc-EJ-BXS"/>
                 <outlet property="titleView" destination="Inz-gw-9a1" id="u7M-D3-h3k"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -46,14 +48,14 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQv-rE-EaE">
                                             <rect key="frame" x="20" y="11.5" width="43" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.78823529410000004" green="0.71372549019999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="cQv-rE-EaE" firstAttribute="centerY" secondItem="Inz-gw-9a1" secondAttribute="centerY" id="S6W-Ne-jHc"/>
+                                        <constraint firstAttribute="bottom" secondItem="cQv-rE-EaE" secondAttribute="bottom" constant="11.5" id="bf9-Cr-xxI"/>
                                         <constraint firstAttribute="height" constant="44" id="m9H-Km-3jP"/>
                                         <constraint firstItem="cQv-rE-EaE" firstAttribute="leading" secondItem="Inz-gw-9a1" secondAttribute="leading" constant="20" id="rWW-Tf-vyA"/>
                                     </constraints>

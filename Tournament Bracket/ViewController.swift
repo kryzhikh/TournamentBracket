@@ -31,6 +31,7 @@ class ViewController: UIViewController, CollectionTransitionable {
         groupsCollectionView.register(UINib(nibName: GroupCell.nibName, bundle: nil), forCellWithReuseIdentifier: GroupCell.reuseId)
         prepareData()
         view.apply(.grayBackground)
+        navigationController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +62,10 @@ class ViewController: UIViewController, CollectionTransitionable {
             layout.scrollDirection = size.width < size.height ? .vertical : .horizontal
         }
     }
+    
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .default
+//    }
 
 }
 
@@ -81,18 +86,18 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let group = groups[indexPath.row]
-        let vc = GroupDetailsViewController()
-        vc.indexPath = indexPath
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            let img = cell.makeSnapshot()
-            print(img)
-        }
-        vc.group = group
-        vc.groupCardWidth = groupCardWidth
         if let nc = self.navigationController {
+            let vc = GroupNavigationDetailsViewController()
+            vc.indexPath = indexPath
+            vc.group = group
+            
             nc.pushViewController(vc, animated: true)
         }
         else {
+            let vc = GroupDetailsViewController()
+            vc.indexPath = indexPath
+            vc.group = group
+            vc.groupCardWidth = groupCardWidth
             present(vc, animated: true)
         }
     }
@@ -102,3 +107,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
 //    }
 }
 
+extension ViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return GroupDetailsNavigationTransition(duration: 0.5, isPresenting: operation == .push)
+    }
+}
