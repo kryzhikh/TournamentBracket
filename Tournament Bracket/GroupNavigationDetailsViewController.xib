@@ -13,9 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupNavigationDetailsViewController" customModule="Tournament_Bracket" customModuleProvider="target">
             <connections>
                 <outlet property="groupContainer" destination="Oc9-GX-EFW" id="bYZ-2g-osT"/>
+                <outlet property="groupContainerWidthConstraint" destination="L36-td-OMh" id="hFr-cu-YxC"/>
                 <outlet property="groupContentView" destination="er2-Ga-c8N" id="6km-db-FYm"/>
-                <outlet property="groupLeftConstraint" destination="rfe-uS-haU" id="WiT-X1-QQ5"/>
-                <outlet property="groupRightConstraint" destination="pHd-70-sHI" id="9jv-9O-7q9"/>
                 <outlet property="groupTableView" destination="qYp-7Z-o3d" id="tuR-ff-IBh"/>
                 <outlet property="headerHeightConstraint" destination="m9H-Km-3jP" id="G5u-7I-9E5"/>
                 <outlet property="titleLabel" destination="cQv-rE-EaE" id="Dgr-2l-TDo"/>
@@ -47,7 +46,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQv-rE-EaE">
-                                            <rect key="frame" x="20" y="11.5" width="43" height="21"/>
+                                            <rect key="frame" x="20" y="11.5" width="43.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -70,7 +69,6 @@
                                 <constraint firstItem="qYp-7Z-o3d" firstAttribute="leading" secondItem="er2-Ga-c8N" secondAttribute="leading" id="NZM-r5-osA"/>
                                 <constraint firstItem="qYp-7Z-o3d" firstAttribute="top" secondItem="Inz-gw-9a1" secondAttribute="bottom" id="PFl-1u-mRX"/>
                                 <constraint firstItem="Inz-gw-9a1" firstAttribute="top" secondItem="er2-Ga-c8N" secondAttribute="top" id="iDh-Ef-wxh"/>
-                                <constraint firstAttribute="width" constant="343" id="vZz-K7-Jdz"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -79,6 +77,7 @@
                         <constraint firstItem="er2-Ga-c8N" firstAttribute="leading" secondItem="Oc9-GX-EFW" secondAttribute="leading" id="5Ae-lF-FGr"/>
                         <constraint firstItem="er2-Ga-c8N" firstAttribute="top" secondItem="Oc9-GX-EFW" secondAttribute="top" id="C4G-In-Lhh"/>
                         <constraint firstAttribute="bottom" secondItem="er2-Ga-c8N" secondAttribute="bottom" id="Gi1-Mc-t7u"/>
+                        <constraint firstAttribute="width" constant="343" id="L36-td-OMh"/>
                         <constraint firstAttribute="trailing" secondItem="er2-Ga-c8N" secondAttribute="trailing" id="zhh-We-ahf"/>
                     </constraints>
                 </view>
@@ -86,10 +85,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Oc9-GX-EFW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="224" id="JF3-BN-6WZ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Oc9-GX-EFW" secondAttribute="trailing" constant="16" id="pHd-70-sHI"/>
-                <constraint firstItem="Oc9-GX-EFW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="rfe-uS-haU"/>
+                <constraint firstItem="Oc9-GX-EFW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="axn-lQ-oaS"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="140" y="154.27286356821591"/>
         </view>
     </objects>
 </document>

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B17AF18222E916E0086780C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF17222E916E0086780C /* AppDelegate.swift */; };
-		8B17AF1A222E916E0086780C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF19222E916E0086780C /* ViewController.swift */; };
+		8B17AF1A222E916E0086780C /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF19222E916E0086780C /* GroupsViewController.swift */; };
 		8B17AF1D222E916E0086780C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B17AF1B222E916E0086780C /* Main.storyboard */; };
 		8B17AF20222E916E0086780C /* TournamentTables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF1E222E916E0086780C /* TournamentTables.xcdatamodeld */; };
 		8B17AF22222E91700086780C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B17AF21222E91700086780C /* Assets.xcassets */; };
@@ -41,7 +41,7 @@
 /* Begin PBXFileReference section */
 		8B17AF14222E916E0086780C /* Tournament Bracket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tournament Bracket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B17AF17222E916E0086780C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B17AF19222E916E0086780C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8B17AF19222E916E0086780C /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		8B17AF1C222E916E0086780C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B17AF1F222E916E0086780C /* TournamentTables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TournamentTables.xcdatamodel; sourceTree = "<group>"; };
 		8B17AF21222E91700086780C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,13 +104,12 @@
 			children = (
 				8B17AF4A222FBE000086780C /* CoreData */,
 				8B17AF17222E916E0086780C /* AppDelegate.swift */,
-				8B17AF19222E916E0086780C /* ViewController.swift */,
+				8B17AF19222E916E0086780C /* GroupsViewController.swift */,
 				8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */,
 				8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */,
 				8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */,
 				8B1B3BF52242459B0043E4F5 /* GroupDetailsNavigationTransition.swift */,
 				8B1B3BF722425AB50043E4F5 /* GroupNavigationDetailsViewController.swift */,
-				8B413B452245109300DFBC52 /* NavigationController.swift */,
 				8B1B3BF822425AB50043E4F5 /* GroupNavigationDetailsViewController.xib */,
 				8B17AF1B222E916E0086780C /* Main.storyboard */,
 				8B17AF4B222FCC6F0086780C /* Groups */,
@@ -118,6 +117,7 @@
 				8B17AF23222E91700086780C /* LaunchScreen.storyboard */,
 				8B17AF26222E91700086780C /* Info.plist */,
 				8B17AF1E222E916E0086780C /* TournamentTables.xcdatamodeld */,
+				8B413B452245109300DFBC52 /* NavigationController.swift */,
 				8BED1A1A22310EE2009E330D /* Reusable.swift */,
 				8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */,
 				8BF299DB2236A15D006A685C /* Style.swift */,
@@ -236,7 +236,7 @@
 				8BF299E4223B8CFF006A685C /* CollectionTransitionable.swift in Sources */,
 				8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */,
 				8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */,
-				8B17AF1A222E916E0086780C /* ViewController.swift in Sources */,
+				8B17AF1A222E916E0086780C /* GroupsViewController.swift in Sources */,
 				8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */,
 				8B413B462245109300DFBC52 /* NavigationController.swift in Sources */,
 				8B17AF41222FB6090086780C /* CoreData.swift in Sources */,

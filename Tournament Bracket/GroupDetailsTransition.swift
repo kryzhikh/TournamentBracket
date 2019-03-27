@@ -29,7 +29,7 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupDetailsViewController
             let fromTabBarController = transitionContext.viewController(forKey: .from) as! UITabBarController
-            let fromController = fromTabBarController.selectedViewController! as! ViewController
+            let fromController = fromTabBarController.selectedViewController! as! GroupsViewController
             
             
             toController.view.frame = transitionContext.finalFrame(for: toController)
@@ -93,7 +93,7 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         
         else {
             let toTabBarController = transitionContext.viewController(forKey: .to) as! UITabBarController
-            let toController = toTabBarController.selectedViewController! as! ViewController
+            let toController = toTabBarController.selectedViewController! as! GroupsViewController
             let fromController = transitionContext.viewController(forKey: .from) as! GroupDetailsViewController
             containerView.addSubview(fromController.view)
             containerView.addSubview(toTabBarController.view)

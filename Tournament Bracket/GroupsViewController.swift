@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GroupsViewController.swift
 //  TournamentTables
 //
 //  Created by Konstantin Ryzhikh on 05/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, CollectionTransitionable {
+class GroupsViewController: UIViewController, CollectionTransitionable {
     
     var groupCardWidth: CGFloat {
         return min(view.frame.width - 60, 340.0)
@@ -69,7 +69,7 @@ class ViewController: UIViewController, CollectionTransitionable {
 
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension GroupsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groups.count
     }
@@ -83,7 +83,7 @@ extension ViewController: UICollectionViewDataSource {
 
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let group = groups[indexPath.row]
         if let nc = self.navigationController {
@@ -107,7 +107,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDelegateFlow
 //    }
 }
 
-extension ViewController: UINavigationControllerDelegate {
+extension GroupsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return GroupDetailsNavigationTransition(duration: 0.5, isPresenting: operation == .push)
     }

@@ -11,16 +11,15 @@ import UIKit
 class GroupNavigationDetailsViewController: UIViewController {
 
     @IBOutlet weak var groupContainer: UIView!
-    @IBOutlet private weak var groupContentView: UIView!
+    @IBOutlet weak var groupContentView: UIView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var groupTableView: GroupTableView!
     
     @IBOutlet weak var titleToTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var groupLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var groupRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var groupContainerWidthConstraint: NSLayoutConstraint!
     
     var indexPath = IndexPath(row: 0, section: 0)
     
