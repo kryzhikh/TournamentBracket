@@ -28,7 +28,7 @@ class GroupCell: UICollectionViewCell {
     
     func fill(with group: Group) {
         groupView.groupTable.group = group
-        groupView.titleLabel.text = "Group " + (group.name?.uppercased() ?? "")
+        groupView.title = "Group " + (group.name?.uppercased() ?? "")
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

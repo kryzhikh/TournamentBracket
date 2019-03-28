@@ -12,20 +12,20 @@ class GroupNavigationDetailsViewController: UIViewController {
 
     @IBOutlet weak var groupContainer: UIView!
     @IBOutlet weak var groupContentView: UIView!
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var groupTableView: GroupTableView!
+    @IBOutlet weak var groupView: GroupView!
     
-    @IBOutlet weak var titleToTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var titleLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var groupToTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var groupContainerWidthConstraint: NSLayoutConstraint!
+    
+    var headerWidth: CGFloat = 0
+    var headerToTopOffset: CGFloat = 0
+    var titleViewHeight: CGFloat = 0
     
     var indexPath = IndexPath(row: 0, section: 0)
     
     var group: Group? {
         didSet {
-            if groupTableView != nil {
+            if groupView != nil {
                 setupGroup()
             }
         }
@@ -39,13 +39,12 @@ class GroupNavigationDetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationController?.navigationBar.isTranslucent = false
-//        navigationController?.isNavigationBarHidden = false
     }
     
     func setupGroup() {
-        groupTableView.group = group
+        groupView.groupTable.group = group
         title = "Group " + (group?.name ?? "")
-        titleLabel.text = title
+        groupView.title = title ?? ""
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

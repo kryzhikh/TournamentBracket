@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupDetailsViewController: UIViewController, CollectionDetailsTransitionable {
+class GroupDetailsViewController: UIViewController {
     
     @IBOutlet weak var groupContainerView: UIView!
     @IBOutlet weak var contentContainer: UIView!

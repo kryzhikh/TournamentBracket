@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupsViewController: UIViewController, CollectionTransitionable {
+class GroupsViewController: UIViewController {
     
     var groupCardWidth: CGFloat {
         return min(view.frame.width - 60, 340.0)
@@ -40,7 +40,7 @@ class GroupsViewController: UIViewController, CollectionTransitionable {
     }
     
     func prepareData() {
-        let groupsDict = ["A": ["Vasili", "Petr", "Ivan", "Valera", "Gorislav"],
+        let groupsDict = ["A": ["Vasili", "Petr", "Ivan", "Valera"],
                           "B": ["Mike", "John", "Tom", "Jerry"],
                           "C": ["Jovanni", "Alejandro", "Marko", "Polo"],
                           "D": ["Chan", "Chen", "Zhao", "Minzi"]]
@@ -56,15 +56,11 @@ class GroupsViewController: UIViewController, CollectionTransitionable {
         groupsCollectionView.reloadData()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        if let layout = groupsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = size.width < size.height ? .vertical : .horizontal
-        }
-    }
-    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .default
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        super.viewWillTransition(to: size, with: coordinator)
+//        if let layout = groupsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            layout.scrollDirection = size.width < size.height ? .vertical : .horizontal
+//        }
 //    }
 
 }
@@ -101,10 +97,6 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelega
             present(vc, animated: true)
         }
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = collectionView.frame.width - 40
-//        let height = CGFloat(groups[indexPath.row].competitors?.count ?? 0) * GroupTableCell.cellHeight
-//    }
 }
 
 extension GroupsViewController: UINavigationControllerDelegate {

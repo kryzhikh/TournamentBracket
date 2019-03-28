@@ -32,9 +32,7 @@
 		8BF299DF2237F9E2006A685C /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */; };
 		8BF299E02237F9E2006A685C /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */; };
 		8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E1223A9616006A685C /* UIimage+Ext.swift */; };
-		8BF299E4223B8CFF006A685C /* CollectionTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E3223B8CFF006A685C /* CollectionTransitionable.swift */; };
 		8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */; };
-		8BF299E8223BA8AE006A685C /* CollectionDetailsTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E7223BA8AE006A685C /* CollectionDetailsTransitionable.swift */; };
 		8BF2C5132243B43800E768B5 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2C5122243B43800E768B5 /* GroupView.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,9 +64,7 @@
 		8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
 		8BF299E1223A9616006A685C /* UIimage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Ext.swift"; sourceTree = "<group>"; };
-		8BF299E3223B8CFF006A685C /* CollectionTransitionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTransitionable.swift; sourceTree = "<group>"; };
 		8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsTransition.swift; sourceTree = "<group>"; };
-		8BF299E7223BA8AE006A685C /* CollectionDetailsTransitionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailsTransitionable.swift; sourceTree = "<group>"; };
 		8BF2C5122243B43800E768B5 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,12 +101,8 @@
 				8B17AF4A222FBE000086780C /* CoreData */,
 				8B17AF17222E916E0086780C /* AppDelegate.swift */,
 				8B17AF19222E916E0086780C /* GroupsViewController.swift */,
-				8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */,
-				8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */,
-				8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */,
-				8B1B3BF52242459B0043E4F5 /* GroupDetailsNavigationTransition.swift */,
-				8B1B3BF722425AB50043E4F5 /* GroupNavigationDetailsViewController.swift */,
-				8B1B3BF822425AB50043E4F5 /* GroupNavigationDetailsViewController.xib */,
+				8BB61A5E224D0E8C00AFC973 /* Modal Transition */,
+				8BB61A5F224D0E9800AFC973 /* Navigation Transition */,
 				8B17AF1B222E916E0086780C /* Main.storyboard */,
 				8B17AF4B222FCC6F0086780C /* Groups */,
 				8B17AF21222E91700086780C /* Assets.xcassets */,
@@ -118,13 +110,11 @@
 				8B17AF26222E91700086780C /* Info.plist */,
 				8B17AF1E222E916E0086780C /* TournamentTables.xcdatamodeld */,
 				8B413B452245109300DFBC52 /* NavigationController.swift */,
-				8BED1A1A22310EE2009E330D /* Reusable.swift */,
-				8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */,
 				8BF299DB2236A15D006A685C /* Style.swift */,
+				8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */,
 				8BF299E1223A9616006A685C /* UIimage+Ext.swift */,
 				8B1B3BF3224118580043E4F5 /* UIColor+Ext.swift */,
-				8BF299E3223B8CFF006A685C /* CollectionTransitionable.swift */,
-				8BF299E7223BA8AE006A685C /* CollectionDetailsTransitionable.swift */,
+				8BED1A1A22310EE2009E330D /* Reusable.swift */,
 			);
 			path = "Tournament Bracket";
 			sourceTree = "<group>";
@@ -150,6 +140,26 @@
 				8BF2C5122243B43800E768B5 /* GroupView.swift */,
 			);
 			path = Groups;
+			sourceTree = "<group>";
+		};
+		8BB61A5E224D0E8C00AFC973 /* Modal Transition */ = {
+			isa = PBXGroup;
+			children = (
+				8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */,
+				8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */,
+				8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */,
+			);
+			path = "Modal Transition";
+			sourceTree = "<group>";
+		};
+		8BB61A5F224D0E9800AFC973 /* Navigation Transition */ = {
+			isa = PBXGroup;
+			children = (
+				8B1B3BF52242459B0043E4F5 /* GroupDetailsNavigationTransition.swift */,
+				8B1B3BF722425AB50043E4F5 /* GroupNavigationDetailsViewController.swift */,
+				8B1B3BF822425AB50043E4F5 /* GroupNavigationDetailsViewController.xib */,
+			);
+			path = "Navigation Transition";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +243,6 @@
 				8B17AF2E222E97360086780C /* GroupCell.swift in Sources */,
 				8B1B3BF922425AB50043E4F5 /* GroupNavigationDetailsViewController.swift in Sources */,
 				8B17AF34222EA0760086780C /* GroupTableCell.swift in Sources */,
-				8BF299E4223B8CFF006A685C /* CollectionTransitionable.swift in Sources */,
 				8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */,
 				8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */,
 				8B17AF1A222E916E0086780C /* GroupsViewController.swift in Sources */,
@@ -248,7 +257,6 @@
 				8B17AF48222FBDB40086780C /* Competitor+CoreDataClass.swift in Sources */,
 				8B1B3BF4224118580043E4F5 /* UIColor+Ext.swift in Sources */,
 				8B17AF20222E916E0086780C /* TournamentTables.xcdatamodeld in Sources */,
-				8BF299E8223BA8AE006A685C /* CollectionDetailsTransitionable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,6 +42,7 @@
                                 <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="title" value="Title"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
