@@ -12,6 +12,10 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     var duration: TimeInterval
     var isPresenting: Bool
+    var cancelled = false
+    private var pausedTime: CFTimeInterval = 0
+    
+    weak var context: UIViewControllerContextTransitioning?
     
     init(duration: TimeInterval, isPresenting: Bool) {
         self.duration = duration
@@ -25,6 +29,8 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let duration = transitionDuration(using: transitionContext)
         let containerView = transitionContext.containerView
+        
+        context = transitionContext
         
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupDetailsViewController
@@ -106,8 +112,14 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 fromController.contentContainer.transform = CGAffineTransform(translationX: 0, y: -50)
                 snapshot.frame.origin = snapshotFinalOrigin
             }) { finished in
-                targetCell.alpha = 1
                 snapshot.removeFromSuperview()
+                if transitionContext.transitionWasCancelled {
+                    fromController.groupContainerView.alpha = 1
+                    containerView.insertSubview(fromController.view, aboveSubview: toController.view)
+                }
+                else {
+                    targetCell.alpha = 1
+                }
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             }
         }

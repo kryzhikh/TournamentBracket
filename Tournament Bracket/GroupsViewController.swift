@@ -21,6 +21,9 @@ class GroupsViewController: UIViewController {
     }
     
     var groups: [Group]!
+    let interactor = Interactor()
+    let modalTransition = GroupDetailsTransition(duration: 0.5, isPresenting: false)
+    let navigationTransition = GroupDetailsNavigationTransition(duration: 0.5, isPresenting: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +79,6 @@ extension GroupsViewController: UICollectionViewDataSource {
         cell.fill(with: group)
         return cell
     }
-
 }
 
 extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -84,6 +86,8 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelega
         let group = groups[indexPath.row]
         if let nc = self.navigationController {
             let vc = GroupNavigationDetailsViewController()
+            vc.interactor = interactor
+            vc.transition = navigationTransition
             vc.indexPath = indexPath
             vc.group = group
             
@@ -101,6 +105,11 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelega
 
 extension GroupsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return GroupDetailsNavigationTransition(duration: 0.5, isPresenting: operation == .push)
+        navigationTransition.isPresenting = operation == .push
+        return navigationTransition
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return !navigationTransition.isPresenting && interactor.hasStarted ? interactor : nil
     }
 }
