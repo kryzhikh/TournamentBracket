@@ -13,6 +13,8 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
     var duration: TimeInterval
     var isPresenting: Bool
     
+    weak var context: UIViewControllerContextTransitioning?
+    
     init(duration: TimeInterval, isPresenting: Bool) {
         self.duration = duration
         self.isPresenting = isPresenting
@@ -25,7 +27,7 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let duration = transitionDuration(using: transitionContext)
         let containerView = transitionContext.containerView
-        
+        context = transitionContext
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupNavigationDetailsViewController
             let fromController = transitionContext.viewController(forKey: .from) as! GroupsViewController
@@ -48,6 +50,7 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
             
             let headerHeight = (toController.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
             
+            let start = Date()
             UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 fromController.view.alpha = 0
                 
@@ -57,6 +60,7 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
                 toController.groupView.headerHeight = headerHeight
                 toController.view.layoutIfNeeded()
             }) { _ in
+                print("Animation duration: ", Date().timeIntervalSince(start))
                 toController.navigationController?.isNavigationBarHidden = false
                 toController.groupToTopConstraint.constant = -headerHeight
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -72,6 +76,8 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
             let targetCell = toController.groupsCollectionView.cellForItem(at: fromController.indexPath)!
             targetCell.alpha = 0
             let groupFinalOrigin = toController.groupsCollectionView.convert(targetCell.frame.origin, to: fromController.view)
+            
+            let headerHeight = (toController.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
             
             containerView.addSubview(toController.view)
             containerView.addSubview(fromController.view)
@@ -91,8 +97,19 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
                 fromController.view.layoutIfNeeded()
 
             }) { finished in
-                targetCell.alpha = 1
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+                if transitionContext.transitionWasCancelled {
+                    //return things back!
+                    fromController.groupContainerWidthConstraint.constant = toController.view.frame.width
+                    fromController.groupView.titlePosition = .center
+                    fromController.groupView.headerHeight = headerHeight
+                    fromController.groupToTopConstraint.constant = -headerHeight
+                    fromController.view.layoutIfNeeded()
+                    fromController.navigationController?.isNavigationBarHidden = false
+                }
+                else {
+                    targetCell.alpha = 1
+                }
             }
         }
     }

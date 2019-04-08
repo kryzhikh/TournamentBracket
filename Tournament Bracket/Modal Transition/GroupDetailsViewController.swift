@@ -17,6 +17,9 @@ class GroupDetailsViewController: UIViewController {
     
     @IBOutlet weak var groupView: GroupView!
     
+    var transition: GroupDetailsTransition?
+    var interactor: Interactor?
+    
     var indexPath = IndexPath(row: 0, section: 0)
     
     var group: Group? {
@@ -35,20 +38,6 @@ class GroupDetailsViewController: UIViewController {
         }
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        commonInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        transitioningDelegate = self
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +49,28 @@ class GroupDetailsViewController: UIViewController {
         view.apply(.grayBackground)
         contentContainer.apply(.grayBackground)
         groupCardWidthConstraint.constant = groupCardWidth
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
+        groupView.addGestureRecognizer(pan)
+    }
+    
+    @objc func viewPanned(_ pan: UIPanGestureRecognizer) {
+        guard let transition = transition, let interactor = interactor else { return }
+        
+        let translation = pan.translation(in: view)
+        let verticalMovement = translation.y / view.bounds.height
+        let downwardMovement = max(verticalMovement , 0)
+        let movementPercent = min(downwardMovement, 1)
+        let threshold: CGFloat = 0.2
+        let shouldFinish = movementPercent > threshold || pan.velocity(in: self.view).y > 1000
+        
+        if case .began = pan.state {
+            interactor.hasStarted = true
+            dismiss(animated: true)
+        }
+        
+        interactor.interactWith(pan, movementPercent: movementPercent, shouldFinish: shouldFinish, transitionContext: transition.context)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,14 +87,4 @@ class GroupDetailsViewController: UIViewController {
         dismiss(animated: true)
     }
 
-}
-
-extension GroupDetailsViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return GroupDetailsTransition(duration: 0.4, isPresenting: false)
-    }
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return GroupDetailsTransition(duration: 0.4, isPresenting: true)
-    }
 }
