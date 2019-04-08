@@ -21,8 +21,8 @@ class GroupNavigationDetailsViewController: UIViewController {
     var headerToTopOffset: CGFloat = 0
     var titleViewHeight: CGFloat = 0
     
-    weak var interactor: Interactor!
-    weak var transition: GroupDetailsNavigationTransition!
+    weak var interactor: Interactor?
+    weak var transition: GroupDetailsNavigationTransition?
     
     var indexPath = IndexPath(row: 0, section: 0)
     
@@ -49,40 +49,20 @@ class GroupNavigationDetailsViewController: UIViewController {
     }
     
     @objc func viewPanned(_ pan: UIPanGestureRecognizer) {
+        guard let transition = transition, let interactor = interactor else { return }
+        
         let translation = pan.translation(in: view)
         let hMovement = translation.x / view.bounds.width
         let rightMovement = max(hMovement , 0)
         let movementPercent = min(rightMovement, 1)
         let threshold: CGFloat = 0.3
-//        print(movementPercent)
-        switch pan.state {
-        case .began:
-            print("began")
+        let shouldFinish = movementPercent > threshold || pan.velocity(in: self.view).x > 1000
+        if case .began = pan.state {
             interactor.hasStarted = true
             navigationController?.popViewController(animated: true)
-        case .changed:
-            interactor.update(movementPercent)
-            interactor.shouldFinish = movementPercent > threshold || pan.velocity(in: self.view).y > 1000
-        case .cancelled, .failed:
-            print("cancel | fail")
-            interactor.hasStarted = false
-            interactor.cancel()
-            transition.context?.cancelInteractiveTransition()
-        case .ended:
-            print("end")
-            print(pan.velocity(in: self.view))
-            interactor.hasStarted = false
-            if interactor.shouldFinish {
-                interactor.finish()
-            }
-            else {
-                interactor.cancel()
-                transition.context?.cancelInteractiveTransition()
-            }
-            
-        default:
-            break
         }
+        
+        interactor.interactWith(pan, movementPercent: movementPercent, shouldFinish: shouldFinish, transitionContext: transition.context)
     }
     
     func setupGroup() {

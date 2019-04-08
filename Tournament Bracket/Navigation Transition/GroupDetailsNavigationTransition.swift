@@ -12,6 +12,7 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
     
     var duration: TimeInterval
     var isPresenting: Bool
+    
     weak var context: UIViewControllerContextTransitioning?
     
     init(duration: TimeInterval, isPresenting: Bool) {

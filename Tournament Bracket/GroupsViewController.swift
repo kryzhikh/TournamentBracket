@@ -96,6 +96,9 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelega
         else {
             let vc = GroupDetailsViewController()
             vc.indexPath = indexPath
+            vc.transition = modalTransition
+            vc.interactor = interactor
+            vc.transitioningDelegate = self
             vc.group = group
             vc.groupCardWidth = groupCardWidth
             present(vc, animated: true)
@@ -103,6 +106,8 @@ extension GroupsViewController: UICollectionViewDelegate, UICollectionViewDelega
     }
 }
 
+
+//MARK: - Custom navigation controller transition
 extension GroupsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         navigationTransition.isPresenting = operation == .push
@@ -111,5 +116,22 @@ extension GroupsViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return !navigationTransition.isPresenting && interactor.hasStarted ? interactor : nil
+    }
+}
+
+//MARK: - Custom modal transition
+extension GroupsViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        modalTransition.isPresenting = false
+        return modalTransition
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        modalTransition.isPresenting = true
+        return modalTransition
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
     }
 }

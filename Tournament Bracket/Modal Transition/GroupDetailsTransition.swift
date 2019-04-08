@@ -12,8 +12,6 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     var duration: TimeInterval
     var isPresenting: Bool
-    var cancelled = false
-    private var pausedTime: CFTimeInterval = 0
     
     weak var context: UIViewControllerContextTransitioning?
     
@@ -29,9 +27,7 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let duration = transitionDuration(using: transitionContext)
         let containerView = transitionContext.containerView
-        
         context = transitionContext
-        
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupDetailsViewController
             let fromTabBarController = transitionContext.viewController(forKey: .from) as! UITabBarController
