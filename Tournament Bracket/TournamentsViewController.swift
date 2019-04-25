@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TournamentsViewController: UICollectionViewController {
+class TournamentsViewController: UIViewController {
     
     var groupCardWidth: CGFloat {
         return min(view.frame.width - 60, 340.0)
     }
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var expandedLayout: UICollectionViewFlowLayout!
     var collapesedLayout: UICollectionViewFlowLayout!
@@ -90,16 +92,16 @@ class TournamentsViewController: UICollectionViewController {
     
 }
 
-extension TournamentsViewController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension TournamentsViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return tournaments.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tournaments[section].groups?.count ?? 0
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCell.reuseId, for: indexPath) as! GroupCell
         let group = tournaments[indexPath.section].groups![indexPath.row] as! Group
         print(indexPath, group.name!, group.competitors!.count)
@@ -108,9 +110,9 @@ extension TournamentsViewController {
     }
 }
 
-extension TournamentsViewController {
+extension TournamentsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let group = groups[indexPath.row]
         if let nc = self.navigationController {
 //            let vc = GroupNavigationDetailsViewController()
