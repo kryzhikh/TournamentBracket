@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B17AF18222E916E0086780C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF17222E916E0086780C /* AppDelegate.swift */; };
-		8B17AF1A222E916E0086780C /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF19222E916E0086780C /* GroupsViewController.swift */; };
+		8B17AF1A222E916E0086780C /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF19222E916E0086780C /* TournamentsViewController.swift */; };
 		8B17AF1D222E916E0086780C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B17AF1B222E916E0086780C /* Main.storyboard */; };
 		8B17AF20222E916E0086780C /* TournamentTables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B17AF1E222E916E0086780C /* TournamentTables.xcdatamodeld */; };
 		8B17AF22222E91700086780C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B17AF21222E91700086780C /* Assets.xcassets */; };
@@ -27,12 +27,23 @@
 		8B1B3BFA22425AB50043E4F5 /* GroupNavigationDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B1B3BF822425AB50043E4F5 /* GroupNavigationDetailsViewController.xib */; };
 		8B405200225757A300289708 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4051FF225757A300289708 /* Interactor.swift */; };
 		8B413B462245109300DFBC52 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B413B452245109300DFBC52 /* NavigationController.swift */; };
+		8B614D21227060FD00A77AE6 /* BracketMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B614D20227060FD00A77AE6 /* BracketMatchCell.swift */; };
+		8B614D232271E01900A77AE6 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B614D222271E01900A77AE6 /* UIImage+Ext.swift */; };
+		8B74A9CF225F5CF400912BB6 /* TournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74A9CD225F5CF400912BB6 /* TournamentViewController.swift */; };
+		8B74A9D2225F7E3400912BB6 /* TransitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74A9D1225F7E3400912BB6 /* TransitionService.swift */; };
+		8B7B9720225CB15B000171F6 /* GroupsCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B971F225CB15B000171F6 /* GroupsCollectionLayout.swift */; };
+		8B7B9725225E2056000171F6 /* Tournament+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B9721225E1FFC000171F6 /* Tournament+CoreDataClass.swift */; };
+		8BA094C222647FAD005D38B1 /* BracketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094C022647FAD005D38B1 /* BracketViewController.swift */; };
+		8BA094C5226480DF005D38B1 /* BracketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094C4226480DF005D38B1 /* BracketCell.swift */; };
+		8BA094DA22676E6A005D38B1 /* Match+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094CE22676E6A005D38B1 /* Match+CoreDataClass.swift */; };
+		8BA094DC22676E6A005D38B1 /* Bracket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094D022676E6A005D38B1 /* Bracket+CoreDataClass.swift */; };
+		8BA094DE22676E6A005D38B1 /* Participant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094D222676E6A005D38B1 /* Participant+CoreDataClass.swift */; };
 		8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED1A1A22310EE2009E330D /* Reusable.swift */; };
 		8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */; };
 		8BF299DC2236A15D006A685C /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DB2236A15D006A685C /* Style.swift */; };
 		8BF299DF2237F9E2006A685C /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */; };
 		8BF299E02237F9E2006A685C /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */; };
-		8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E1223A9616006A685C /* UIimage+Ext.swift */; };
+		8BF299E2223A9616006A685C /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E1223A9616006A685C /* UIView+Ext.swift */; };
 		8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */; };
 		8BF2C5132243B43800E768B5 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2C5122243B43800E768B5 /* GroupView.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +51,7 @@
 /* Begin PBXFileReference section */
 		8B17AF14222E916E0086780C /* Tournament Bracket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tournament Bracket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B17AF17222E916E0086780C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B17AF19222E916E0086780C /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		8B17AF19222E916E0086780C /* TournamentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
 		8B17AF1C222E916E0086780C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B17AF1F222E916E0086780C /* TournamentTables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TournamentTables.xcdatamodel; sourceTree = "<group>"; };
 		8B17AF21222E91700086780C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,12 +71,24 @@
 		8B1B3BF822425AB50043E4F5 /* GroupNavigationDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNavigationDetailsViewController.xib; sourceTree = "<group>"; };
 		8B4051FF225757A300289708 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		8B413B452245109300DFBC52 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		8B614D20227060FD00A77AE6 /* BracketMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketMatchCell.swift; sourceTree = "<group>"; };
+		8B614D222271E01900A77AE6 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		8B74A9CD225F5CF400912BB6 /* TournamentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewController.swift; sourceTree = "<group>"; };
+		8B74A9CE225F5CF400912BB6 /* TournamentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TournamentViewController.xib; sourceTree = "<group>"; };
+		8B74A9D1225F7E3400912BB6 /* TransitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionService.swift; sourceTree = "<group>"; };
+		8B7B971F225CB15B000171F6 /* GroupsCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCollectionLayout.swift; sourceTree = "<group>"; };
+		8B7B9721225E1FFC000171F6 /* Tournament+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tournament+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BA094C022647FAD005D38B1 /* BracketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketViewController.swift; sourceTree = "<group>"; };
+		8BA094C4226480DF005D38B1 /* BracketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketCell.swift; sourceTree = "<group>"; };
+		8BA094CE22676E6A005D38B1 /* Match+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BA094D022676E6A005D38B1 /* Bracket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BA094D222676E6A005D38B1 /* Participant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Participant+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BED1A1A22310EE2009E330D /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		8BF299DB2236A15D006A685C /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
 		8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
-		8BF299E1223A9616006A685C /* UIimage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Ext.swift"; sourceTree = "<group>"; };
+		8BF299E1223A9616006A685C /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsTransition.swift; sourceTree = "<group>"; };
 		8BF2C5122243B43800E768B5 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,9 +123,14 @@
 		8B17AF16222E916E0086780C /* Tournament Bracket */ = {
 			isa = PBXGroup;
 			children = (
+				8B74A9D3225F7E6F00912BB6 /* Transitions */,
 				8B17AF4A222FBE000086780C /* CoreData */,
+				8BA094C72264C425005D38B1 /* Bracket */,
 				8B17AF17222E916E0086780C /* AppDelegate.swift */,
-				8B17AF19222E916E0086780C /* GroupsViewController.swift */,
+				8B17AF19222E916E0086780C /* TournamentsViewController.swift */,
+				8B74A9CD225F5CF400912BB6 /* TournamentViewController.swift */,
+				8B74A9CE225F5CF400912BB6 /* TournamentViewController.xib */,
+				8B7B971F225CB15B000171F6 /* GroupsCollectionLayout.swift */,
 				8BB61A5E224D0E8C00AFC973 /* Modal Transition */,
 				8BB61A5F224D0E9800AFC973 /* Navigation Transition */,
 				8B17AF1B222E916E0086780C /* Main.storyboard */,
@@ -111,12 +139,12 @@
 				8B17AF23222E91700086780C /* LaunchScreen.storyboard */,
 				8B17AF26222E91700086780C /* Info.plist */,
 				8B17AF1E222E916E0086780C /* TournamentTables.xcdatamodeld */,
-				8B4051FF225757A300289708 /* Interactor.swift */,
 				8B413B452245109300DFBC52 /* NavigationController.swift */,
 				8BF299DB2236A15D006A685C /* Style.swift */,
 				8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */,
-				8BF299E1223A9616006A685C /* UIimage+Ext.swift */,
+				8BF299E1223A9616006A685C /* UIView+Ext.swift */,
 				8B1B3BF3224118580043E4F5 /* UIColor+Ext.swift */,
+				8B614D222271E01900A77AE6 /* UIImage+Ext.swift */,
 				8BED1A1A22310EE2009E330D /* Reusable.swift */,
 			);
 			path = "Tournament Bracket";
@@ -128,6 +156,10 @@
 				8B17AF40222FB6090086780C /* CoreData.swift */,
 				8B17AF42222FBDB40086780C /* Group+CoreDataClass.swift */,
 				8B17AF44222FBDB40086780C /* Competitor+CoreDataClass.swift */,
+				8B7B9721225E1FFC000171F6 /* Tournament+CoreDataClass.swift */,
+				8BA094CE22676E6A005D38B1 /* Match+CoreDataClass.swift */,
+				8BA094D022676E6A005D38B1 /* Bracket+CoreDataClass.swift */,
+				8BA094D222676E6A005D38B1 /* Participant+CoreDataClass.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -145,10 +177,30 @@
 			path = Groups;
 			sourceTree = "<group>";
 		};
+		8B74A9D3225F7E6F00912BB6 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				8B74A9D1225F7E3400912BB6 /* TransitionService.swift */,
+				8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */,
+				8B1B3BF52242459B0043E4F5 /* GroupDetailsNavigationTransition.swift */,
+				8B4051FF225757A300289708 /* Interactor.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		8BA094C72264C425005D38B1 /* Bracket */ = {
+			isa = PBXGroup;
+			children = (
+				8BA094C022647FAD005D38B1 /* BracketViewController.swift */,
+				8BA094C4226480DF005D38B1 /* BracketCell.swift */,
+				8B614D20227060FD00A77AE6 /* BracketMatchCell.swift */,
+			);
+			path = Bracket;
+			sourceTree = "<group>";
+		};
 		8BB61A5E224D0E8C00AFC973 /* Modal Transition */ = {
 			isa = PBXGroup;
 			children = (
-				8BF299E5223B8EF3006A685C /* GroupDetailsTransition.swift */,
 				8BF299DD2237F9E2006A685C /* GroupDetailsViewController.swift */,
 				8BF299DE2237F9E2006A685C /* GroupDetailsViewController.xib */,
 			);
@@ -158,7 +210,6 @@
 		8BB61A5F224D0E9800AFC973 /* Navigation Transition */ = {
 			isa = PBXGroup;
 			children = (
-				8B1B3BF52242459B0043E4F5 /* GroupDetailsNavigationTransition.swift */,
 				8B1B3BF722425AB50043E4F5 /* GroupNavigationDetailsViewController.swift */,
 				8B1B3BF822425AB50043E4F5 /* GroupNavigationDetailsViewController.xib */,
 			);
@@ -240,27 +291,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B614D21227060FD00A77AE6 /* BracketMatchCell.swift in Sources */,
 				8B17AF31222E9C400086780C /* GroupTableView.swift in Sources */,
 				8B1B3BF62242459B0043E4F5 /* GroupDetailsNavigationTransition.swift in Sources */,
 				8BF2C5132243B43800E768B5 /* GroupView.swift in Sources */,
 				8B17AF2E222E97360086780C /* GroupCell.swift in Sources */,
+				8BA094DC22676E6A005D38B1 /* Bracket+CoreDataClass.swift in Sources */,
 				8B1B3BF922425AB50043E4F5 /* GroupNavigationDetailsViewController.swift in Sources */,
+				8BA094C222647FAD005D38B1 /* BracketViewController.swift in Sources */,
+				8BA094C5226480DF005D38B1 /* BracketCell.swift in Sources */,
+				8B614D232271E01900A77AE6 /* UIImage+Ext.swift in Sources */,
 				8B17AF34222EA0760086780C /* GroupTableCell.swift in Sources */,
 				8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */,
+				8BA094DA22676E6A005D38B1 /* Match+CoreDataClass.swift in Sources */,
+				8B74A9D2225F7E3400912BB6 /* TransitionService.swift in Sources */,
 				8BF299E6223B8EF3006A685C /* GroupDetailsTransition.swift in Sources */,
-				8B17AF1A222E916E0086780C /* GroupsViewController.swift in Sources */,
+				8B17AF1A222E916E0086780C /* TournamentsViewController.swift in Sources */,
 				8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */,
 				8B413B462245109300DFBC52 /* NavigationController.swift in Sources */,
 				8B17AF41222FB6090086780C /* CoreData.swift in Sources */,
 				8B405200225757A300289708 /* Interactor.swift in Sources */,
 				8BF299DC2236A15D006A685C /* Style.swift in Sources */,
+				8B7B9725225E2056000171F6 /* Tournament+CoreDataClass.swift in Sources */,
 				8BF299DF2237F9E2006A685C /* GroupDetailsViewController.swift in Sources */,
 				8B17AF46222FBDB40086780C /* Group+CoreDataClass.swift in Sources */,
 				8B17AF18222E916E0086780C /* AppDelegate.swift in Sources */,
-				8BF299E2223A9616006A685C /* UIimage+Ext.swift in Sources */,
+				8BA094DE22676E6A005D38B1 /* Participant+CoreDataClass.swift in Sources */,
+				8BF299E2223A9616006A685C /* UIView+Ext.swift in Sources */,
 				8B17AF48222FBDB40086780C /* Competitor+CoreDataClass.swift in Sources */,
 				8B1B3BF4224118580043E4F5 /* UIColor+Ext.swift in Sources */,
+				8B74A9CF225F5CF400912BB6 /* TournamentViewController.swift in Sources */,
 				8B17AF20222E916E0086780C /* TournamentTables.xcdatamodeld in Sources */,
+				8B7B9720225CB15B000171F6 /* GroupsCollectionLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Competitor" representedClassName="Competitor" syncable="YES" codeGenerationType="category">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Bracket" representedClassName="Bracket" syncable="YES" codeGenerationType="category">
+        <relationship name="competitors" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Competitor" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Match" syncable="YES"/>
+        <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="bracket" inverseEntity="Tournament" syncable="YES"/>
+    </entity>
+    <entity name="Competitor" representedClassName=".Competitor" syncable="YES" codeGenerationType="category">
         <attribute name="groupScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="URI" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="competitors" inverseEntity="Group" syncable="YES"/>
+        <relationship name="group" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="competitors" inverseEntity="Group" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="competitors" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Competitor" inverseName="group" inverseEntity="Competitor" syncable="YES"/>
+        <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="groups" inverseEntity="Tournament" syncable="YES"/>
+    </entity>
+    <entity name="Match" representedClassName="Match" syncable="YES" codeGenerationType="category">
+        <attribute name="finished" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="player1Score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="player2Score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="previous" inverseEntity="Match" syncable="YES"/>
+        <relationship name="player1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Competitor" syncable="YES"/>
+        <relationship name="player2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Competitor" syncable="YES"/>
+        <relationship name="previous" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="next" inverseEntity="Match" syncable="YES"/>
+        <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="matches" inverseEntity="Tournament" syncable="YES"/>
+    </entity>
+    <entity name="Participant" representedClassName="Participant" syncable="YES" codeGenerationType="category">
+        <attribute name="partyNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="competitor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Competitor" syncable="YES"/>
+    </entity>
+    <entity name="Tournament" representedClassName="Tournament" syncable="YES" codeGenerationType="category">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bracket" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Bracket" inverseName="tournament" inverseEntity="Bracket" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Group" inverseName="tournament" inverseEntity="Group" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Competitor" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Group" positionX="-54" positionY="0" width="128" height="75"/>
+        <element name="Bracket" positionX="-45" positionY="72" width="128" height="90"/>
+        <element name="Competitor" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Group" positionX="-54" positionY="0" width="128" height="90"/>
+        <element name="Match" positionX="-54" positionY="27" width="128" height="195"/>
+        <element name="Participant" positionX="-36" positionY="90" width="128" height="90"/>
+        <element name="Tournament" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
 </model>

@@ -30,7 +30,7 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
         context = transitionContext
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupNavigationDetailsViewController
-            let fromController = transitionContext.viewController(forKey: .from) as! GroupsViewController
+            let fromController = transitionContext.viewController(forKey: .from) as! TournamentsViewController
             
             containerView.backgroundColor = fromController.view.backgroundColor
             
@@ -68,7 +68,7 @@ class GroupDetailsNavigationTransition: NSObject, UIViewControllerAnimatedTransi
         }
             
         else { //dismissing
-            let toController = transitionContext.viewController(forKey: .to) as! GroupsViewController
+            let toController = transitionContext.viewController(forKey: .to) as! TournamentsViewController
             let fromController = transitionContext.viewController(forKey: .from) as! GroupNavigationDetailsViewController
             
             toController.view.frame = transitionContext.finalFrame(for: toController)

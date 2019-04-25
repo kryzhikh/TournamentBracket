@@ -1,5 +1,5 @@
 //
-//  UIimage+Ext.swift
+//  UIView+Ext.swift
 //  Tournament Bracket
 //
 //  Created by Konstantin Ryzhikh on 14/03/2019.

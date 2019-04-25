@@ -10,8 +10,6 @@ import UIKit
 
 class GroupTableView: UITableView {
     
-//    let tableWidth: CGFloat = 300
-    
     var group: Group? {
         didSet {
             reloadData()

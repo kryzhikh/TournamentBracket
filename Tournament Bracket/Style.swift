@@ -28,6 +28,7 @@ extension ViewStyle where T: UIView {
             $0.layer.cornerRadius = 5
         }
     }
+    
     static var shadowed: ViewStyle<T> {
         return ViewStyle<T> {
             let l = $0.layer
@@ -37,14 +38,30 @@ extension ViewStyle where T: UIView {
             l.shadowOpacity = 0.1
         }
     }
+    
     static var grayBackground: ViewStyle<T> {
         return ViewStyle<T> {
-            $0.backgroundColor = UIColor(hex: 0xF0EFEB)
+            $0.backgroundColor = UIColor(hex: 0xF1F2F2)
         }
     }
+    
     static var groupNameBackground: ViewStyle<T> {
         return ViewStyle<T> {
             $0.backgroundColor = UIColor(hex: 0xC9B6FF)
+        }
+    }
+    
+    static var lightGrayThinBorder: ViewStyle<T> {
+        return ViewStyle<T> {
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.layer.borderWidth = 1
+        }
+    }
+    
+    static var whiteBorder: ViewStyle<T> {
+        return ViewStyle<T> {
+            $0.layer.borderColor = UIColor.white.cgColor
+            $0.layer.borderWidth = 1
         }
     }
 }

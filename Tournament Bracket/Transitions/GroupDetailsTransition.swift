@@ -31,7 +31,7 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         if isPresenting {
             let toController = transitionContext.viewController(forKey: .to) as! GroupDetailsViewController
             let fromTabBarController = transitionContext.viewController(forKey: .from) as! UITabBarController
-            let fromController = fromTabBarController.selectedViewController! as! GroupsViewController
+            let fromController = fromTabBarController.selectedViewController! as! TournamentsViewController
             
             containerView.backgroundColor = fromController.view.backgroundColor
             
@@ -84,7 +84,7 @@ class GroupDetailsTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }
         else {
             let toTabBarController = transitionContext.viewController(forKey: .to) as! UITabBarController
-            let toController = toTabBarController.selectedViewController! as! GroupsViewController
+            let toController = toTabBarController.selectedViewController! as! TournamentsViewController
             let fromController = transitionContext.viewController(forKey: .from) as! GroupDetailsViewController
             
             fromController.groupContainerView.alpha = 0
