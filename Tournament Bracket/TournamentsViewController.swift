@@ -38,16 +38,17 @@ class TournamentsViewController: UIViewController {
         super.viewDidLoad()
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            expandedLayout = layout
-            expandedLayout.estimatedItemSize = CGSize(width: groupCardWidth, height: 220)
-//            expandedLayout.minimumLineSpacing = 10
-//            expandedLayout.sectionInset.bottom = 30
-            collapesedLayout = GroupsCollectionLayout()
-            collapesedLayout.estimatedItemSize = CGSize(width: groupCardWidth, height: 220)
-//            collapesedLayout.minimumLineSpacing = -200
-//            collapesedLayout.sectionInset.bottom = 30
+            layout.estimatedItemSize = CGSize(width: groupCardWidth, height: 220)
+//            layout.minimumLineSpacing = 10
+            layout.sectionInset.bottom = 30
+            collapesedLayout = layout
+            
+            expandedLayout = GroupsCollectionLayout()
+            expandedLayout.sectionInset.bottom = 30
+            expandedLayout.scrollDirection = .vertical
+            expandedLayout.estimatedItemSize = layout.estimatedItemSize
         }
-//        groupsCollectionView.collectionViewLayout = collapesedLayout
+        
         collectionView.register(UINib(nibName: GroupCell.nibName, bundle: nil), forCellWithReuseIdentifier: GroupCell.reuseId)
         prepareData()
         view.apply(.grayBackground)
@@ -115,67 +116,53 @@ extension TournamentsViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let group = groups[indexPath.row]
         if let nc = self.navigationController {
-//            let vc = GroupNavigationDetailsViewController()
-//            vc.interactor = transitionService.interactor
-//            vc.transition = transitionService.navigationTransition
-//            vc.indexPath = indexPath
-//            vc.group = group
-//
-            let vc = TournamentViewController()
-            vc.tournament = tournaments[indexPath.section]
-            vc.groupCardWidth = groupCardWidth
-            vc.useLayoutToLayoutNavigationTransitions = true
+            let vc = GroupNavigationDetailsViewController()
+            vc.interactor = transitionService.interactor
+            vc.transition = transitionService.navigationTransition
+            vc.indexPath = indexPath
+            vc.group = group
             nc.pushViewController(vc, animated: true)
         }
         else {
             let cell = collectionView.cellForItem(at: indexPath)!
-            let layout = expanded ? collapesedLayout : expandedLayout
-            expanded = !expanded
+            
             if expandedSection == indexPath.section {
-                expandedSection = -1
+//                expandedSection = -1
+                let vc = GroupDetailsViewController()
+                vc.indexPath = indexPath
+                vc.transition = transitionService.modalTransition
+                vc.interactor = transitionService.interactor
+                vc.transitioningDelegate = transitionService
+                vc.group = group
+                vc.groupCardWidth = groupCardWidth
+                present(vc, animated: true)
+
             }
             else {
+                let layout = expanded ? collapesedLayout : expandedLayout
+                expanded = !expanded
                 expandedSection = indexPath.section
+                UIView.animate(withDuration: 0.3) {
+                    collectionView.setCollectionViewLayout(layout!, animated: true)
+                    collectionView.contentOffset.y = -collectionView.adjustedContentInset.top
+                }
             }
-            UIView.animate(withDuration: 0.3) {
-                collectionView.setCollectionViewLayout(layout!, animated: true)
-                collectionView.contentOffset.y = -collectionView.adjustedContentInset.top
-            }
-//            let vc = GroupDetailsViewController()
-//            vc.indexPath = indexPath
-//            vc.transition = transitionService.modalTransition
-//            vc.interactor = transitionService.interactor
-//            vc.transitioningDelegate = self
-//            vc.group = group
-//            vc.groupCardWidth = groupCardWidth
-//            present(vc, animated: true)
+            
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        print("LINE SPACING")
-        return section == expandedSection ? 10 : -200
+        return section != expandedSection && navigationController == nil ? -200 : 10
     }
     
 }
 
 extension TournamentsViewController: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return transitionService.navigationControllerTransitioning(for: operation)
-//    }
-//
-//    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        return transitionService.navigationControllerInteractiveTransitioning()
-//    }
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        if let vc = viewController as? TournamentsViewController {
-            vc.collectionView.dataSource = vc
-            vc.collectionView.collectionViewLayout = collapesedLayout
-        }
-        else if let vc = viewController as? TournamentViewController {
-            vc.collectionView.dataSource = vc
-            vc.collectionView.collectionViewLayout = expandedLayout
-            vc.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        }
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionService.navigationControllerTransitioning(for: operation)
+    }
+
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return transitionService.navigationControllerInteractiveTransitioning()
     }
 }
