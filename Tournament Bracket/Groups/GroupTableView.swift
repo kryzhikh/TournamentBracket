@@ -58,7 +58,7 @@ extension GroupTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(GroupTableCell.self, for: indexPath)
-        if let c = group?.competitors?[indexPath.row] as? Competitor {
+        if let c = group?.competitors?[indexPath.row] as? Player {
             cell.nameLabel.text = c.name
             cell.scoreLabel.text = String(c.groupScore)
         }

@@ -22,7 +22,7 @@ public class Tournament: NSManagedObject {
     class func makeBracketTournament(name: String, competitorsNames: [String], context: NSManagedObjectContext) -> Tournament {
         let t = self.init(context: context)
         t.name = name
-        let competitors = competitorsNames.map { Competitor(name: $0, context: context) }
+        let competitors = competitorsNames.map { Player(name: $0, context: context) }
         t.bracket = Bracket(competitors: competitors, context: context)
         return t
     }

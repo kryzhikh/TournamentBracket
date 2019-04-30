@@ -13,7 +13,7 @@ import CoreData
 @objc(Match)
 public class Match: NSManagedObject {
     
-    class func makeMatch(stage: Int32, orderNumber: Int32, player1: Competitor? = nil, player2: Competitor? = nil, context: NSManagedObjectContext) -> Match {
+    class func makeMatch(stage: Int32, orderNumber: Int32, player1: Player? = nil, player2: Player? = nil, context: NSManagedObjectContext) -> Match {
         let m = Match(context: context)
         m.player1 = player1
         m.player2 = player2

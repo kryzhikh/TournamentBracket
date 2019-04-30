@@ -1,5 +1,5 @@
 //
-//  Competitor+CoreDataClass.swift
+//  Player+CoreDataClass.swift
 //  Tournament Bracket
 //
 //  Created by Konstantin Ryzhikh on 06/03/2019.
@@ -11,8 +11,8 @@ import Foundation
 import CoreData
 import UIKit
 
-@objc(Competitor)
-public class Competitor: NSManagedObject {
+@objc(Player)
+public class Player: NSManagedObject {
     
     var image: UIImage {
         let defaultImage = #imageLiteral(resourceName: "default_player")

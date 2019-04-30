@@ -13,7 +13,7 @@ import CoreData
 @objc(Group)
 public class Group: NSManagedObject {
     
-    convenience init(name: String, competitors: [Competitor] = [], context: NSManagedObjectContext) {
+    convenience init(name: String, competitors: [Player] = [], context: NSManagedObjectContext) {
         self.init(context: context)
         self.name = name
         self.competitors = NSOrderedSet(array: competitors)
@@ -22,9 +22,9 @@ public class Group: NSManagedObject {
     convenience init(name: String, competitorsNames: [String] = [], context: NSManagedObjectContext) {
         self.init(context: context)
         self.name = name
-        var competitors = [Competitor]()
+        var competitors = [Player]()
         for name in competitorsNames {
-            let competitor = Competitor(name: name, context: context)
+            let competitor = Player(name: name, context: context)
             competitors.append(competitor)
         }
         self.competitors = NSOrderedSet(array: competitors)

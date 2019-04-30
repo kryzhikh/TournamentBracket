@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HAq-Pr-O9r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Tournament View Controller-->
+        <scene sceneID="yzV-4U-LBj">
+            <objects>
+                <viewController storyboardIdentifier="CreateTournamentViewController" id="HAq-Pr-O9r" customClass="CreateTournamentViewController" customModule="Tournament_Bracket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="32X-Jq-kdt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJW-wX-YzY">
+                                <rect key="frame" x="70" y="298.5" width="235" height="70.5"/>
+                                <color key="backgroundColor" red="0.78823529410000004" green="0.71372549019999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hJW-wX-YzY" secondAttribute="height" multiplier="200:60" id="EhZ-gX-0sX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <state key="normal" title="Create Tournament"/>
+                                <connections>
+                                    <action selector="createTournament:" destination="HAq-Pr-O9r" eventType="touchUpInside" id="Tzx-gA-Sxs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TiC-IP-8mL" firstAttribute="trailing" secondItem="hJW-wX-YzY" secondAttribute="trailing" constant="70" id="Zf7-SR-XIU"/>
+                            <constraint firstItem="hJW-wX-YzY" firstAttribute="leading" secondItem="TiC-IP-8mL" secondAttribute="leading" constant="70" id="cIV-F6-GAr"/>
+                            <constraint firstItem="hJW-wX-YzY" firstAttribute="centerY" secondItem="32X-Jq-kdt" secondAttribute="centerY" id="x2n-po-7qJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TiC-IP-8mL"/>
+                    </view>
+                    <connections>
+                        <outlet property="createTournamentButton" destination="hJW-wX-YzY" id="UiX-lt-cBi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OSg-ci-ckO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-274" y="29"/>
+        </scene>
+        <!--Add Players View Controller-->
+        <scene sceneID="kEB-e7-KMC">
+            <objects>
+                <viewController storyboardIdentifier="AddPlayersViewController" id="8ai-am-p3L" customClass="AddPlayersViewController" customModule="Tournament_Bracket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YlY-54-Sd6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter player name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCs-pN-Sfx">
+                                <rect key="frame" x="56" y="320" width="262" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dah-Le-i8p">
+                                <rect key="frame" x="20" y="370" width="335" height="233"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="233" id="KjE-Ya-gfm"/>
+                                </constraints>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1e-YK-mpz">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.78823529410000004" green="0.71372549019999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="gMP-yU-SE1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <state key="normal" title="Create Tournament">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7ZP-Nm-TZM" firstAttribute="trailing" secondItem="Y1e-YK-mpz" secondAttribute="trailing" id="3jw-RR-h8A"/>
+                            <constraint firstItem="7ZP-Nm-TZM" firstAttribute="trailing" secondItem="yCs-pN-Sfx" secondAttribute="trailing" constant="57" id="Avc-wF-8oq"/>
+                            <constraint firstItem="7ZP-Nm-TZM" firstAttribute="bottom" secondItem="Y1e-YK-mpz" secondAttribute="bottom" id="T2c-oO-jlI"/>
+                            <constraint firstItem="dah-Le-i8p" firstAttribute="leading" secondItem="7ZP-Nm-TZM" secondAttribute="leading" constant="20" id="XfW-jT-ahj"/>
+                            <constraint firstItem="7ZP-Nm-TZM" firstAttribute="trailing" secondItem="dah-Le-i8p" secondAttribute="trailing" constant="20" id="Ysl-0J-j6O"/>
+                            <constraint firstItem="dah-Le-i8p" firstAttribute="top" secondItem="yCs-pN-Sfx" secondAttribute="bottom" constant="20" id="ekh-V8-IzU"/>
+                            <constraint firstItem="Y1e-YK-mpz" firstAttribute="leading" secondItem="7ZP-Nm-TZM" secondAttribute="leading" id="g0u-YP-5VM"/>
+                            <constraint firstItem="Y1e-YK-mpz" firstAttribute="top" secondItem="dah-Le-i8p" secondAttribute="bottom" constant="20" id="g3Z-ud-yY4"/>
+                            <constraint firstItem="yCs-pN-Sfx" firstAttribute="leading" secondItem="7ZP-Nm-TZM" secondAttribute="leading" constant="56" id="iis-TZ-ecE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7ZP-Nm-TZM"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonBottomConstraint" destination="T2c-oO-jlI" id="Cpc-Ut-kU9"/>
+                        <outlet property="playerNameTextField" destination="yCs-pN-Sfx" id="jVk-Gu-FTc"/>
+                        <outlet property="tableView" destination="dah-Le-i8p" id="JMY-C2-OHU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="USm-mM-UGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479.71014492753625" y="28.794642857142854"/>
+        </scene>
+    </scenes>
+</document>
