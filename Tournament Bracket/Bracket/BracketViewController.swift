@@ -9,17 +9,24 @@
 import UIKit
 import CoreData
 
-class BracketViewController: UIViewController {
+class BracketViewController: UIViewController, StoryboardInstantiatable {
+    
+    static let storyboardId = "BracketViewController"
+    static let storyboardName = "Main"
     
     private let margin: CGFloat = 30
     private let verticalDistance: CGFloat = 20
     private let horizontalDistance: CGFloat = 20
     private let cellSize = CGSize(width: 150, height: 80)
     
-    var tournament: Tournament!
+    private var bracketPopulated = false
     
-    private var cells: [BracketCell] = []
-    private var mCells: [BracketMatchCell] = []
+    var tournament: Tournament!
+    var matches: [Match] {
+        return (tournament.bracket?.matches ?? []).allObjects as! [Match]
+    }
+    
+    private var cells: [BracketMatchCell] = []
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -27,11 +34,22 @@ class BracketViewController: UIViewController {
         super.viewDidLoad()
         scrollView.apply(.grayBackground)
         
-        prepareStubData()
-        let matches = (tournament.bracket?.matches ?? []).allObjects as! [Match]
-        populateBracket(for: matches)
-        addLines(for: matches)
+//        prepareStubData()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if !bracketPopulated {
+            populateBracket(for: matches)
+            addLines(for: matches)
+            bracketPopulated = true
+        }
+    }
+    
+    func matchSelected(_ match: Match) {
+        
+    }
+    
     
     private func populateBracket(for matches: [Match]) {
         var maxX: CGFloat = 0, maxY: CGFloat = 0
@@ -39,11 +57,12 @@ class BracketViewController: UIViewController {
         for m in matches {
             let cell = BracketMatchCell()
             cell.match = m
-            mCells.append(cell)
+            cell.tapped = { [weak self] m in self?.matchSelected(m) }
+            cells.append(cell)
             scrollView.addSubview(cell)
             cell.frame.size = cellSize
             
-            let x = getMatchCellX(for: Int(m.stage), margin: margin, cellWidth: cellSize.width, horizontalDistance: horizontalDistance)
+            let x = getMatchCellX(forStage: Int(m.stage), margin: margin, cellWidth: cellSize.width, horizontalDistance: horizontalDistance)
             let y = getMatchCellY(forStage: Int(m.stage), matchNumber: Int(m.number), cellHeight: cellSize.height, verticalDistance: verticalDistance, margin: margin)
             cell.frame.origin = CGPoint(x: x, y: y)
             if cell.frame.maxX > maxX {
@@ -54,7 +73,14 @@ class BracketViewController: UIViewController {
             }
         }
         
-        scrollView.contentSize = CGSize(width: max(scrollView.frame.width, maxX + margin), height: maxY + margin)
+        scrollView.contentSize = CGSize(width: max(scrollView.frame.width, maxX + margin), height: max(calculateBracketHeight(), scrollView.frame.height))
+    }
+    
+    private func calculateBracketHeight() -> CGFloat {
+        let maxMatchNumber = matches.filter { $0.stage == 0 }.map { $0.number }.max() ?? 0
+        let lastMatchMinY = margin + CGFloat(maxMatchNumber) * (cellSize.height + verticalDistance)
+        let lastMatchMaxY = lastMatchMinY + cellSize.height
+        return lastMatchMaxY + margin
     }
     
     private func addLines(for matches: [Match]) {
@@ -64,9 +90,9 @@ class BracketViewController: UIViewController {
         let linesPath = UIBezierPath()
         for m in matches {
             guard m.stage > 0 else { continue }
-            let x = getMatchCellX(for: Int(m.stage), margin: margin, cellWidth: cellSize.width, horizontalDistance: horizontalDistance)
+            let x = getMatchCellX(forStage: Int(m.stage), margin: margin, cellWidth: cellSize.width, horizontalDistance: horizontalDistance)
             let y = getMatchCellY(forStage: Int(m.stage), matchNumber: Int(m.number), cellHeight: cellSize.height, verticalDistance: verticalDistance, margin: margin)
-            let prevX = getMatchCellX(for: Int(m.stage) - 1, margin: margin, cellWidth: cellSize.width, horizontalDistance: horizontalDistance)
+            let prevX = getMatchCellX(forStage: Int(m.stage) - 1, margin: margin, cellWidth: cellSize.width, horizontalDistance: horizontalDistance)
             let prevUpperY = getMatchCellY(forStage: Int(m.stage) - 1, matchNumber: Int(m.number) * 2, cellHeight: cellSize.height, verticalDistance: verticalDistance, margin: margin)
             let prevLowerY = getMatchCellY(forStage: Int(m.stage) - 1, matchNumber: Int(m.number) * 2 + 1, cellHeight: cellSize.height, verticalDistance: verticalDistance, margin: margin)
             let frame = CGRect(origin: CGPoint(x: x, y: y), size: cellSize)
@@ -90,13 +116,19 @@ class BracketViewController: UIViewController {
         scrollView.insertSubview(linesView, at: 0)
     }
     
-    private func getMatchCellX(for stage: Int, margin: CGFloat, cellWidth: CGFloat, horizontalDistance: CGFloat) -> CGFloat {
+    private func getMatchCellX(forStage stage: Int, margin: CGFloat, cellWidth: CGFloat, horizontalDistance: CGFloat) -> CGFloat {
         return margin + CGFloat(stage) * (cellSize.width + horizontalDistance)
     }
     
     private func getMatchCellY(forStage stage: Int, matchNumber: Int, cellHeight: CGFloat, verticalDistance: CGFloat, margin: CGFloat) -> CGFloat {
         if stage == 0 {
-            return margin + CGFloat(matchNumber) * (cellSize.height + verticalDistance)
+            var y = margin + CGFloat(matchNumber) * (cellSize.height + verticalDistance)
+            let bracketHeight = calculateBracketHeight()
+            if bracketHeight < scrollView.frame.height {
+                let offset = (scrollView.frame.height - bracketHeight) / 2
+                y += offset
+            }
+            return y
         }
         else {
             let prevStage = stage - 1
@@ -119,6 +151,14 @@ class BracketViewController: UIViewController {
         let context = CoreData.shared.viewContext
         tournament = Tournament.makeBracketTournament(name: "Bracket T", competitorsNames: names, context: context)
         print(names)
+    }
+    
+    @IBAction func dismiss(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
+    deinit {
+        print("DEINITING BVC")
     }
 
 }

@@ -19,6 +19,7 @@ class AddPlayersViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textFieldTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var createTournamentButton: UIButton!
     
     var keyboardObserver: NSObjectProtocol?
     
@@ -39,20 +40,36 @@ class AddPlayersViewController: UIViewController, StoryboardInstantiatable {
         keyboardObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: OperationQueue.main, using: { [weak self] notification in
             self?.keyboardWillChangeFrameNotification(notification)
         })
+        
+        createTournamentButton.addTarget(self, action: #selector(createTournament), for: .touchUpInside)
     }
     
     func addPlayers(_ string: String) {
         let names = string
             .components(separatedBy: CharacterSet.punctuationCharacters)
-            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
         print(names)
         let newPlayers = names.map { Player(name: $0, context: CoreData.shared.viewContext) }
         players.append(contentsOf: newPlayers)
+        
+        tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: players.count - 1, section: 0), at: .none, animated: true)
+        self.playerNameTextField.text = ""
+        
+        createTournamentButton.isEnabled = isBracketValid()
+    }
+    
+    @objc func createTournament() {
+        tournament.bracket?.makeMatches(with: players, context: CoreData.shared.viewContext)
+        let vc = BracketViewController.instantiateFromStoryboard()
+        vc.tournament = tournament
+        present(vc, animated: true)
     }
     
     
     //MARK: - Utility
-    private func checkIfBracketValid() -> Bool {
+    private func isBracketValid() -> Bool {
         return players.count > 2 && players.count.isPowerOfTwo()
     }
     
@@ -82,6 +99,10 @@ class AddPlayersViewController: UIViewController, StoryboardInstantiatable {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(keyboardObserver!)
+    }
+    
 }
 
 extension AddPlayersViewController: UITextFieldDelegate {
@@ -90,10 +111,6 @@ extension AddPlayersViewController: UITextFieldDelegate {
 //        let player = Player(name: name, context: CoreData.shared.viewContext)
 //        players.append(player)
         addPlayers(string)
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: players.count - 1, section: 0), at: .none, animated: true)
-        textField.text = ""
-        print("IS MAIN: ", Thread.isMainThread)
         return true
     }
 }

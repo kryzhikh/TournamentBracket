@@ -22,10 +22,10 @@ class CreateTournamentViewController: UIViewController, StoryboardInstantiatable
     }
 
     @IBAction func createTournament(_ sender: Any) {
-        let ctvc = AddPlayersViewController.instantiateFromStoryboard()
-        let tnmnt = Tournament(name: "Test Tournament", groups: [], context: CoreData.shared.viewContext)
-        ctvc.tournament = tnmnt
-        present(ctvc, animated: true)
+        let vc = AddPlayersViewController.instantiateFromStoryboard()
+        let tnmnt = Tournament.makeBracketTournament(name: "Test Tournament", competitorsNames: [], context: CoreData.shared.viewContext)
+        vc.tournament = tnmnt
+        present(vc, animated: true)
     }
     
 }

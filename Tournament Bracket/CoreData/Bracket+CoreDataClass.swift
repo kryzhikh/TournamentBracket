@@ -16,12 +16,10 @@ public class Bracket: NSManagedObject {
     convenience init(competitors: [Player], context: NSManagedObjectContext) {
         self.init(context: context)
         self.competitors = NSOrderedSet(array: competitors, copyItems: false)
-        
-        makeMatches(with: competitors, context: context)
     }
     
     func makeMatches(with competitors: [Player], context: NSManagedObjectContext) {
-        guard tournament?.started == false else { return }
+        guard competitors.count > 0, tournament?.started == false else { return }
         if let matches = matches {
             for m in matches {
                 let m = m as! Match

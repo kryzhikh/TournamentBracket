@@ -24,6 +24,7 @@ public class Tournament: NSManagedObject {
         t.name = name
         let competitors = competitorsNames.map { Player(name: $0, context: context) }
         t.bracket = Bracket(competitors: competitors, context: context)
+        t.bracket?.makeMatches(with: competitors, context: context)
         return t
     }
 

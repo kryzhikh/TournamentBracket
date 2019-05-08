@@ -17,10 +17,13 @@ class BracketMatchCell: UIView {
     private let player2NameLabel = UILabel()
     private let player2ScoreLabel = UILabel()
     private let player2ImageView = UIImageView()
+    private let button = UIButton()
     
     private let separator = UIView()
     
     private let margin: CGFloat = 10
+    
+    var tapped: ((Match) -> ())? = nil
     
     var match: Match? = nil {
         didSet {
@@ -49,10 +52,12 @@ class BracketMatchCell: UIView {
     }
     
     private func commonInit() {
-        [player1NameLabel, player1ScoreLabel, player1ImageView, player2NameLabel, player2ScoreLabel, player2ImageView, separator].forEach { addSubview($0) }
-        [player1NameLabel, player1ScoreLabel, player1ImageView, player2NameLabel, player2ScoreLabel, player2ImageView, separator].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [player1NameLabel, player1ScoreLabel, player1ImageView, player2NameLabel, player2ScoreLabel, player2ImageView, separator, button].forEach { addSubview($0) }
+        [player1NameLabel, player1ScoreLabel, player1ImageView, player2NameLabel, player2ScoreLabel, player2ImageView, separator, button].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         setupConstraints()
         stylize()
+        
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     private func setupConstraints() {
@@ -86,6 +91,11 @@ class BracketMatchCell: UIView {
             separator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             separator.centerYAnchor.constraint(equalTo: centerYAnchor),
             separator.heightAnchor.constraint(equalToConstant: 0.5),
+            
+            button.leadingAnchor.constraint(equalTo: leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.topAnchor.constraint(equalTo: topAnchor),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor),
             ])
     }
     
@@ -93,6 +103,12 @@ class BracketMatchCell: UIView {
         backgroundColor = .white
         apply(.shadowed)
         separator.backgroundColor = UIColor(hex: "#E6E7E8", alpha: 1)
+    }
+    
+    @objc private func buttonTapped() {
+        if let match = match {
+            tapped?(match)
+        }
     }
 
 }

@@ -43,6 +43,8 @@
 		8BA094DA22676E6A005D38B1 /* Match+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094CE22676E6A005D38B1 /* Match+CoreDataClass.swift */; };
 		8BA094DC22676E6A005D38B1 /* Bracket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094D022676E6A005D38B1 /* Bracket+CoreDataClass.swift */; };
 		8BA094DE22676E6A005D38B1 /* Participant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA094D222676E6A005D38B1 /* Participant+CoreDataClass.swift */; };
+		8BA2E504228319E900839838 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA2E502228319E900839838 /* MatchViewController.swift */; };
+		8BA2E505228319E900839838 /* MatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA2E503228319E900839838 /* MatchViewController.xib */; };
 		8BED1A1B22310EE2009E330D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED1A1A22310EE2009E330D /* Reusable.swift */; };
 		8BED1A1D22310FB7009E330D /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */; };
 		8BF299DC2236A15D006A685C /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF299DB2236A15D006A685C /* Style.swift */; };
@@ -93,6 +95,8 @@
 		8BA094CE22676E6A005D38B1 /* Match+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BA094D022676E6A005D38B1 /* Bracket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BA094D222676E6A005D38B1 /* Participant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Participant+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8BA2E502228319E900839838 /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		8BA2E503228319E900839838 /* MatchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchViewController.xib; sourceTree = "<group>"; };
 		8BED1A1A22310EE2009E330D /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		8BED1A1C22310FB7009E330D /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		8BF299DB2236A15D006A685C /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -133,11 +137,12 @@
 		8B17AF16222E916E0086780C /* Tournament Bracket */ = {
 			isa = PBXGroup;
 			children = (
+				8B17AF17222E916E0086780C /* AppDelegate.swift */,
 				8B74A9D3225F7E6F00912BB6 /* Transitions */,
 				8B17AF4A222FBE000086780C /* CoreData */,
 				8B614D2C2273465A00A77AE6 /* Create Match */,
 				8BA094C72264C425005D38B1 /* Bracket */,
-				8B17AF17222E916E0086780C /* AppDelegate.swift */,
+				8BA2E506228319F300839838 /* Match */,
 				8B17AF19222E916E0086780C /* TournamentsViewController.swift */,
 				8B74A9CD225F5CF400912BB6 /* TournamentViewController.swift */,
 				8B74A9CE225F5CF400912BB6 /* TournamentViewController.xib */,
@@ -221,6 +226,15 @@
 			path = Bracket;
 			sourceTree = "<group>";
 		};
+		8BA2E506228319F300839838 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				8BA2E502228319E900839838 /* MatchViewController.swift */,
+				8BA2E503228319E900839838 /* MatchViewController.xib */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
 		8BB61A5E224D0E8C00AFC973 /* Modal Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +316,7 @@
 				8B1B3BFA22425AB50043E4F5 /* GroupNavigationDetailsViewController.xib in Resources */,
 				8B17AF35222EA0760086780C /* GroupTableCell.xib in Resources */,
 				8B17AF25222E91700086780C /* LaunchScreen.storyboard in Resources */,
+				8BA2E505228319E900839838 /* MatchViewController.xib in Resources */,
 				8B17AF22222E91700086780C /* Assets.xcassets in Resources */,
 				8B614D292273327300A77AE6 /* CreateTournament.storyboard in Resources */,
 				8B17AF1D222E916E0086780C /* Main.storyboard in Resources */,
@@ -317,6 +332,7 @@
 			files = (
 				8B614D21227060FD00A77AE6 /* BracketMatchCell.swift in Sources */,
 				8B614D2B22733E4500A77AE6 /* AddPlayersViewController.swift in Sources */,
+				8BA2E504228319E900839838 /* MatchViewController.swift in Sources */,
 				8B17AF31222E9C400086780C /* GroupTableView.swift in Sources */,
 				8B1B3BF62242459B0043E4F5 /* GroupDetailsNavigationTransition.swift in Sources */,
 				8BF2C5132243B43800E768B5 /* GroupView.swift in Sources */,

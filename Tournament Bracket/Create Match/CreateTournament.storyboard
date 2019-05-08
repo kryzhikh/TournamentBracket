@@ -68,16 +68,17 @@
                                     <constraint firstAttribute="height" constant="233" id="KjE-Ya-gfm"/>
                                 </constraints>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1e-YK-mpz">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1e-YK-mpz">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.78823529410000004" green="0.71372549019999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="gMP-yU-SE1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Create Tournament">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <state key="disabled" title="Number of players must be power of 2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,6 +97,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonBottomConstraint" destination="T2c-oO-jlI" id="Cpc-Ut-kU9"/>
+                        <outlet property="createTournamentButton" destination="Y1e-YK-mpz" id="hns-dA-WEd"/>
                         <outlet property="playerNameTextField" destination="yCs-pN-Sfx" id="jVk-Gu-FTc"/>
                         <outlet property="tableView" destination="dah-Le-i8p" id="JMY-C2-OHU"/>
                     </connections>

@@ -130,21 +130,32 @@
         <!--Bracket-->
         <scene sceneID="pYu-AE-z2T">
             <objects>
-                <viewController id="3pj-35-SAR" customClass="BracketViewController" customModule="Tournament_Bracket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BracketViewController" id="3pj-35-SAR" customClass="BracketViewController" customModule="Tournament_Bracket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cXQ-4f-hOP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O3w-dT-C0B">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MH3-Iy-p77">
+                                <rect key="frame" x="326" y="30" width="39" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.46666666870000001" green="0.3843137324" blue="0.60392159219999997" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="3pj-35-SAR" eventType="touchUpInside" id="9KR-Ix-rfS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O3w-dT-C0B" firstAttribute="leading" secondItem="COk-sE-vxC" secondAttribute="leading" id="0Ds-eG-ERl"/>
-                            <constraint firstItem="COk-sE-vxC" firstAttribute="trailing" secondItem="O3w-dT-C0B" secondAttribute="trailing" id="6uz-gG-Cw3"/>
+                            <constraint firstItem="O3w-dT-C0B" firstAttribute="leading" secondItem="cXQ-4f-hOP" secondAttribute="leading" id="0Ds-eG-ERl"/>
+                            <constraint firstAttribute="trailing" secondItem="O3w-dT-C0B" secondAttribute="trailing" id="6uz-gG-Cw3"/>
+                            <constraint firstItem="MH3-Iy-p77" firstAttribute="top" secondItem="COk-sE-vxC" secondAttribute="top" constant="10" id="EmA-Wv-pDs"/>
                             <constraint firstItem="O3w-dT-C0B" firstAttribute="top" secondItem="cXQ-4f-hOP" secondAttribute="top" id="dzs-x2-hLS"/>
-                            <constraint firstItem="COk-sE-vxC" firstAttribute="bottom" secondItem="O3w-dT-C0B" secondAttribute="bottom" id="yj9-hp-DaL"/>
+                            <constraint firstItem="COk-sE-vxC" firstAttribute="trailing" secondItem="MH3-Iy-p77" secondAttribute="trailing" constant="10" id="rQQ-Ih-Q1r"/>
+                            <constraint firstAttribute="bottom" secondItem="O3w-dT-C0B" secondAttribute="bottom" id="yj9-hp-DaL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="COk-sE-vxC"/>
                     </view>

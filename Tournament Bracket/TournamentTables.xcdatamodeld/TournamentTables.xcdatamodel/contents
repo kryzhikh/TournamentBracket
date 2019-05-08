@@ -20,6 +20,7 @@
         <relationship name="player1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" syncable="YES"/>
         <relationship name="player2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" syncable="YES"/>
         <relationship name="previous" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="next" inverseEntity="Match" syncable="YES"/>
+        <relationship name="sets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Set" inverseName="match" inverseEntity="Set" syncable="YES"/>
         <relationship name="tournament" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tournament" inverseName="matches" inverseEntity="Tournament" syncable="YES"/>
     </entity>
     <entity name="Participant" representedClassName="Participant" syncable="YES" codeGenerationType="category">
@@ -38,9 +39,14 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Set" representedClassName="Set" syncable="YES" codeGenerationType="class">
+        <attribute name="player1Score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="player2Score" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <relationship name="match" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="sets" inverseEntity="Match" syncable="YES"/>
+    </entity>
     <entity name="Tournament" representedClassName="Tournament" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="started" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="started" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="bracket" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Bracket" inverseName="tournament" inverseEntity="Bracket" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Group" inverseName="tournament" inverseEntity="Group" syncable="YES"/>
         <relationship name="matches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Match" inverseName="tournament" inverseEntity="Match" syncable="YES"/>
@@ -48,9 +54,10 @@
     <elements>
         <element name="Bracket" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Group" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="Match" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Match" positionX="0" positionY="0" width="128" height="210"/>
         <element name="Participant" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Player" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Tournament" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="Set" positionX="9" positionY="90" width="128" height="90"/>
     </elements>
 </model>
